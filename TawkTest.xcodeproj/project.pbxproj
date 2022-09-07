@@ -13,7 +13,19 @@
 		B4CFE21628C902E600EA0067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21428C902E600EA0067 /* Main.storyboard */; };
 		B4CFE21828C902E800EA0067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21728C902E800EA0067 /* Assets.xcassets */; };
 		B4CFE21B28C902E800EA0067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21928C902E800EA0067 /* LaunchScreen.storyboard */; };
+		B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE22328C9054600EA0067 /* GithubUser.swift */; };
+		B4CFE23428C907DB00EA0067 /* GithubUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE23328C907DB00EA0067 /* GithubUserTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4CFE22D28C9078F00EA0067 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4CFE20328C902E600EA0067 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4CFE20A28C902E600EA0067;
+			remoteInfo = TawkTest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +36,20 @@
 		B4CFE21728C902E800EA0067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CFE21A28C902E800EA0067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4CFE21C28C902E800EA0067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4CFE22328C9054600EA0067 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
+		B4CFE22928C9078F00EA0067 /* TawkTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TawkTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4CFE23328C907DB00EA0067 /* GithubUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B4CFE20828C902E600EA0067 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4CFE22628C9078F00EA0067 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE20D28C902E600EA0067 /* TawkTest */,
+				B4CFE22A28C9078F00EA0067 /* TawkTestTests */,
 				B4CFE20C28C902E600EA0067 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE20B28C902E600EA0067 /* TawkTest.app */,
+				B4CFE22928C9078F00EA0067 /* TawkTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +80,7 @@
 		B4CFE20D28C902E600EA0067 /* TawkTest */ = {
 			isa = PBXGroup;
 			children = (
+				B4CFE22228C9049D00EA0067 /* Models */,
 				B4CFE20E28C902E600EA0067 /* AppDelegate.swift */,
 				B4CFE21028C902E600EA0067 /* SceneDelegate.swift */,
 				B4CFE21228C902E600EA0067 /* ViewController.swift */,
@@ -65,6 +90,30 @@
 				B4CFE21C28C902E800EA0067 /* Info.plist */,
 			);
 			path = TawkTest;
+			sourceTree = "<group>";
+		};
+		B4CFE22228C9049D00EA0067 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE22328C9054600EA0067 /* GithubUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B4CFE22A28C9078F00EA0067 /* TawkTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE23228C907A300EA0067 /* Models */,
+			);
+			path = TawkTestTests;
+			sourceTree = "<group>";
+		};
+		B4CFE23228C907A300EA0067 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE23328C907DB00EA0067 /* GithubUserTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +136,24 @@
 			productReference = B4CFE20B28C902E600EA0067 /* TawkTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B4CFE22828C9078F00EA0067 /* TawkTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4CFE22F28C9078F00EA0067 /* Build configuration list for PBXNativeTarget "TawkTestTests" */;
+			buildPhases = (
+				B4CFE22528C9078F00EA0067 /* Sources */,
+				B4CFE22628C9078F00EA0067 /* Frameworks */,
+				B4CFE22728C9078F00EA0067 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4CFE22E28C9078F00EA0067 /* PBXTargetDependency */,
+			);
+			name = TawkTestTests;
+			productName = TawkTestTests;
+			productReference = B4CFE22928C9078F00EA0067 /* TawkTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +166,11 @@
 				TargetAttributes = {
 					B4CFE20A28C902E600EA0067 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					B4CFE22828C9078F00EA0067 = {
+						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
+						TestTargetID = B4CFE20A28C902E600EA0067;
 					};
 				};
 			};
@@ -116,6 +188,7 @@
 			projectRoot = "";
 			targets = (
 				B4CFE20A28C902E600EA0067 /* TawkTest */,
+				B4CFE22828C9078F00EA0067 /* TawkTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +204,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4CFE22728C9078F00EA0067 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,12 +219,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4CFE21328C902E600EA0067 /* ViewController.swift in Sources */,
+				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
 				B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */,
 				B4CFE21128C902E600EA0067 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4CFE22528C9078F00EA0067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4CFE23428C907DB00EA0067 /* GithubUserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4CFE22E28C9078F00EA0067 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4CFE20A28C902E600EA0067 /* TawkTest */;
+			targetProxy = B4CFE22D28C9078F00EA0067 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B4CFE21428C902E600EA0067 /* Main.storyboard */ = {
@@ -336,6 +433,53 @@
 			};
 			name = Release;
 		};
+		B4CFE23028C9078F00EA0067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TawkTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TawkTest.app/TawkTest";
+			};
+			name = Debug;
+		};
+		B4CFE23128C9078F00EA0067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TawkTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TawkTest.app/TawkTest";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -353,6 +497,15 @@
 			buildConfigurations = (
 				B4CFE22028C902E800EA0067 /* Debug */,
 				B4CFE22128C902E800EA0067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4CFE22F28C9078F00EA0067 /* Build configuration list for PBXNativeTarget "TawkTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4CFE23028C9078F00EA0067 /* Debug */,
+				B4CFE23128C9078F00EA0067 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
