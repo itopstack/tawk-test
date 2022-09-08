@@ -17,6 +17,9 @@ struct GithubUser {
     let reposUrl: String
     let type: String
     let siteAdmin: Bool
+    
+    var hasSeen = false
+    var note: String? = nil
 }
 
 extension GithubUser: Codable {

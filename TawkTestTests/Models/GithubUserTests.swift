@@ -24,6 +24,8 @@ class GithubUserTests: XCTestCase {
         XCTAssertEqual(sut.reposUrl, "https://api.github.com/users/itopstack/repos")
         XCTAssertFalse(sut.siteAdmin)
         XCTAssertEqual(sut.login, "itopstack")
+        XCTAssertFalse(sut.hasSeen)
+        XCTAssertNil(sut.note)
     }
 }
 
