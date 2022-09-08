@@ -30,6 +30,8 @@
 		B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25B28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift */; };
 		B4CFE25F28C9DC7A00EA0067 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */; };
 		B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */; };
+		B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */; };
+		B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		B4CFE25B28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+Assertions.swift"; sourceTree = "<group>"; };
 		B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
 		B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerViewModel.swift; sourceTree = "<group>"; };
+		B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 		B4CFE20D28C902E600EA0067 /* TawkTest */ = {
 			isa = PBXGroup;
 			children = (
+				B4CFE26228C9F91400EA0067 /* Screens */,
 				B4CFE24928C9B69A00EA0067 /* CoreData */,
 				B4CFE23528C99ED200EA0067 /* Services */,
 				B4CFE22228C9049D00EA0067 /* Models */,
@@ -136,6 +141,7 @@
 		B4CFE22A28C9078F00EA0067 /* TawkTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				B4CFE26528C9FAC900EA0067 /* Screens */,
 				B4CFE25D28C9DC6400EA0067 /* CoreData */,
 				B4CFE23F28C9AB5100EA0067 /* Helpers */,
 				B4CFE23C28C9A59800EA0067 /* Services */,
@@ -199,6 +205,38 @@
 				B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		B4CFE26228C9F91400EA0067 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26628C9FAD300EA0067 /* UserList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B4CFE26528C9FAC900EA0067 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26728C9FAE000EA0067 /* UserList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B4CFE26628C9FAD300EA0067 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */,
+			);
+			path = UserList;
+			sourceTree = "<group>";
+		};
+		B4CFE26728C9FAE000EA0067 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */,
+			);
+			path = UserList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +343,7 @@
 			files = (
 				B4CFE25228C9BB2C00EA0067 /* CoreDataStore.swift in Sources */,
 				B4CFE23928C99FAD00EA0067 /* MyError.swift in Sources */,
+				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
 				B4CFE21328C902E600EA0067 /* ViewController.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
@@ -323,6 +362,7 @@
 			files = (
 				B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */,
 				B4CFE23B28C9A4CE00EA0067 /* MyErrorTests.swift in Sources */,
+				B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */,
 				B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B4CFE23428C907DB00EA0067 /* GithubUserTests.swift in Sources */,
 				B4CFE23E28C9A5C500EA0067 /* GithubServiceTests.swift in Sources */,

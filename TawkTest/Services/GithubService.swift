@@ -7,17 +7,11 @@
 
 import Foundation
 
-protocol Requestable {
-    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+protocol UsersFetchable: AnyObject {
+    func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void)
 }
 
-extension URLSession: Requestable {
-    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        dataTask(with: url, completionHandler: completion).resume()
-    }
-}
-
-struct GithubService {
+final class GithubService: UsersFetchable {
     private let session: Requestable
     
     init(session: Requestable = URLSession.shared) {
@@ -63,5 +57,15 @@ struct GithubService {
                 result = .failure(error)
             }
         }
+    }
+}
+
+protocol Requestable: AnyObject {
+    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+}
+
+extension URLSession: Requestable {
+    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        dataTask(with: url, completionHandler: completion).resume()
     }
 }
