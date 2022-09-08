@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GithubUser {
+struct GithubUser: Equatable {
     let login: String
     let id: Int
     let avatarUrl: String

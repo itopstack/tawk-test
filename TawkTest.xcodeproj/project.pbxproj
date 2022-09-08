@@ -25,6 +25,11 @@
 		B4CFE25228C9BB2C00EA0067 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25128C9BB2C00EA0067 /* CoreDataStore.swift */; };
 		B4CFE25428C9BC9C00EA0067 /* ManagedGithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25328C9BC9C00EA0067 /* ManagedGithubUser.swift */; };
 		B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25528C9BFE600EA0067 /* ManagedCache.swift */; };
+		B4CFE25828C9CB3A00EA0067 /* NSManagedObjectContext+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25728C9CB3A00EA0067 /* NSManagedObjectContext+Stub.swift */; };
+		B4CFE25A28C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25928C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift */; };
+		B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25B28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift */; };
+		B4CFE25F28C9DC7A00EA0067 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */; };
+		B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		B4CFE25128C9BB2C00EA0067 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		B4CFE25328C9BC9C00EA0067 /* ManagedGithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGithubUser.swift; sourceTree = "<group>"; };
 		B4CFE25528C9BFE600EA0067 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
+		B4CFE25728C9CB3A00EA0067 /* NSManagedObjectContext+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Stub.swift"; sourceTree = "<group>"; };
+		B4CFE25928C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Helpers.swift"; sourceTree = "<group>"; };
+		B4CFE25B28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+Assertions.swift"; sourceTree = "<group>"; };
+		B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
+		B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +136,7 @@
 		B4CFE22A28C9078F00EA0067 /* TawkTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				B4CFE25D28C9DC6400EA0067 /* CoreData */,
 				B4CFE23F28C9AB5100EA0067 /* Helpers */,
 				B4CFE23C28C9A59800EA0067 /* Services */,
 				B4CFE23228C907A300EA0067 /* Models */,
@@ -162,6 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE24028C9AB6D00EA0067 /* Constants.swift */,
+				B4CFE25728C9CB3A00EA0067 /* NSManagedObjectContext+Stub.swift */,
+				B4CFE25928C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift */,
+				B4CFE25B28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift */,
+				B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -174,6 +189,14 @@
 				B4CFE25128C9BB2C00EA0067 /* CoreDataStore.swift */,
 				B4CFE25328C9BC9C00EA0067 /* ManagedGithubUser.swift */,
 				B4CFE25528C9BFE600EA0067 /* ManagedCache.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		B4CFE25D28C9DC6400EA0067 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE25E28C9DC7A00EA0067 /* CoreDataStoreTests.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -298,10 +321,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */,
 				B4CFE23B28C9A4CE00EA0067 /* MyErrorTests.swift in Sources */,
+				B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B4CFE23428C907DB00EA0067 /* GithubUserTests.swift in Sources */,
 				B4CFE23E28C9A5C500EA0067 /* GithubServiceTests.swift in Sources */,
+				B4CFE25A28C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift in Sources */,
 				B4CFE24128C9AB6D00EA0067 /* Constants.swift in Sources */,
+				B4CFE25F28C9DC7A00EA0067 /* CoreDataStoreTests.swift in Sources */,
+				B4CFE25828C9CB3A00EA0067 /* NSManagedObjectContext+Stub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

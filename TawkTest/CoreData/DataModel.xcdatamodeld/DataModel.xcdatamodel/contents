@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ManagedCache" representedClassName="ManagedCache" syncable="YES">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="githubUsers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedGithubUser" inverseName="cache" inverseEntity="ManagedGithubUser"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="githubUsers" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedGithubUser" inverseName="cache" inverseEntity="ManagedGithubUser"/>
     </entity>
     <entity name="ManagedGithubUser" representedClassName="ManagedGithubUser" syncable="YES">
-        <attribute name="avatarUrl" optional="YES" attributeType="String"/>
-        <attribute name="followersUrl" optional="YES" attributeType="String"/>
-        <attribute name="hasSeen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="login" optional="YES" attributeType="String"/>
+        <attribute name="avatarUrl" attributeType="String"/>
+        <attribute name="followersUrl" attributeType="String"/>
+        <attribute name="hasSeen" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="login" attributeType="String"/>
         <attribute name="note" optional="YES" attributeType="String"/>
-        <attribute name="organizationsUrl" optional="YES" attributeType="String"/>
-        <attribute name="reposUrl" optional="YES" attributeType="String"/>
-        <attribute name="siteAdmin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-        <attribute name="url" optional="YES" attributeType="String"/>
-        <relationship name="cache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCache" inverseName="githubUsers" inverseEntity="ManagedCache"/>
+        <attribute name="organizationsUrl" attributeType="String"/>
+        <attribute name="reposUrl" attributeType="String"/>
+        <attribute name="siteAdmin" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <relationship name="cache" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCache" inverseName="githubUsers" inverseEntity="ManagedCache"/>
     </entity>
     <elements>
         <element name="ManagedGithubUser" positionX="-45" positionY="0" width="128" height="209"/>
