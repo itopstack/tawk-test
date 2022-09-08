@@ -7,13 +7,29 @@
 
 import Foundation
 
+protocol Requestable {
+    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+}
+
+extension URLSession: Requestable {
+    func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        dataTask(with: url, completionHandler: completion).resume()
+    }
+}
+
 struct GithubService {
+    private let session: Requestable
+    
+    init(session: Requestable = URLSession.shared) {
+        self.session = session
+    }
+    
     func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void) {
         guard let url = URL(string: "https://api.github.com/users?since=\(since)") else {
             return completion(.failure(MyError.invalidURL))
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        session.request(with: url) { data, response, error in
             var result: Result<[GithubUser], Error>?
             defer {
                 DispatchQueue.main.async {
@@ -46,6 +62,6 @@ struct GithubService {
             } catch {
                 result = .failure(error)
             }
-        }.resume()
+        }
     }
 }
