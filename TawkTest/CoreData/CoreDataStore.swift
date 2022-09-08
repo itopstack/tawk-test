@@ -18,7 +18,13 @@ typealias DeletionCompletion = (Error?) -> Void
 typealias InsertionCompletion = (Error?) -> Void
 typealias RetrievalCompletion = (RetrieveCachedResult) -> Void
 
-final class CoreDataStore {
+protocol LocalStorage: AnyObject {
+    func retrieve(completion: @escaping RetrievalCompletion)
+    func insert(_ users: [GithubUser], timestamp: Date, completion: @escaping InsertionCompletion)
+    func deleteCachedUsers(completion: @escaping DeletionCompletion)
+}
+
+final class CoreDataStore: LocalStorage {
     static let modelName = "DataModel"
     static let model = NSManagedObjectModel(name: modelName, in: Bundle(for: CoreDataStore.self))
 
@@ -88,7 +94,7 @@ final class CoreDataStore {
         }
     }
 
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+    func deleteCachedUsers(completion: @escaping DeletionCompletion) {
         perform { [weak self] context in
             self?.lock {
                 do {

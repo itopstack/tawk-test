@@ -13,26 +13,31 @@ protocol UserListViewControllerViewModelDelegate: AnyObject {
 }
 
 final class UserListViewControllerViewModel {
-    private let service: UsersFetchable
+    private let githubService: UsersFetchable
+    private let localStorage: LocalStorage
     private weak var delegate: UserListViewControllerViewModelDelegate?
     
     private(set) var userId = 0
     private(set) var error: Error?
     private(set) var users: [GithubUser] = []
     
-    init(service: UsersFetchable = GithubService(), delegate: UserListViewControllerViewModelDelegate) {
-        self.service = service
+    init(service: UsersFetchable = GithubService(),
+         localStorage: LocalStorage,
+         delegate: UserListViewControllerViewModelDelegate) {
+        self.githubService = service
         self.delegate = delegate
+        self.localStorage = localStorage
     }
     
-    func fetchUsers() {
-        service.fetchUsers(since: userId) { [weak self] result in
+    func fetchUsers(timestamp: Date) {
+        githubService.fetchUsers(since: userId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case let .success(users):
                 self.userId += 1
                 self.users.append(contentsOf: users)
+                self.localStorage.insert(users, timestamp: timestamp) { _ in }
                 self.delegate?.userListViewControllerViewModelDidFetchUsersSuccessfully(self)
                 
             case let .failure(error):

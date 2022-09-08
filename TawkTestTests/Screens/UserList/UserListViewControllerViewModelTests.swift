@@ -12,13 +12,15 @@ class UserListViewControllerViewModelTests: XCTestCase {
     private var sut: UserListViewControllerViewModel!
     private var mockService: MockGithubService!
     private var mockDelegate: MockUserListViewControllerViewModelDelegate!
+    private var mockLocalStorage: MockLocalStorage!
     
     override func setUp() {
         super.setUp()
         
         mockService = MockGithubService()
         mockDelegate = MockUserListViewControllerViewModelDelegate()
-        sut = UserListViewControllerViewModel(service: mockService, delegate: mockDelegate)
+        mockLocalStorage = MockLocalStorage()
+        sut = UserListViewControllerViewModel(service: mockService, localStorage: mockLocalStorage, delegate: mockDelegate)
     }
     
     override func tearDown() {
@@ -36,24 +38,31 @@ class UserListViewControllerViewModelTests: XCTestCase {
     }
     
     func test_fetchUsers_successfully() {
+        let timestamp = Date()
         mockService.testCase = .success
         
-        sut.fetchUsers()
+        sut.fetchUsers(timestamp: timestamp)
         
         XCTAssertEqual(sut.userId, 1)
-        XCTAssertEqual(sut.users.count, 1)
-        XCTAssertIdentical(mockDelegate.args1.first, sut)
+        XCTAssertEqual(sut.users.count, 2)
+        XCTAssertIdentical(mockDelegate.fetchUsersSuccessfullyArgs.first, sut)
+        
+        let first = mockLocalStorage.insertArgs.first
+        XCTAssertEqual(first?.0, uniqueUsers())
+        XCTAssertEqual(first?.1, timestamp)
     }
     
     func test_fetchUsers_fail() {
         mockService.testCase = .failure
         
-        sut.fetchUsers()
+        sut.fetchUsers(timestamp: Date())
         
         XCTAssertEqual(sut.userId, 0)
         XCTAssertNotNil(sut.error)
-        XCTAssertIdentical(mockDelegate.args2.first?.0, sut)
-        XCTAssertEqual(mockDelegate.args2.first?.1, anyError.localizedDescription)
+        
+        let first = mockDelegate.fetchUsersFailArgs.first
+        XCTAssertIdentical(first?.0, sut)
+        XCTAssertEqual(first?.1, anyError.localizedDescription)
     }
 }
 
@@ -70,7 +79,7 @@ final class MockGithubService: UsersFetchable {
     func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void) {
         switch testCase {
         case .success:
-            completion(.success([uniqueUser()]))
+            completion(.success(uniqueUsers()))
         case .failure:
             completion(.failure(anyError))
         default:
@@ -81,13 +90,30 @@ final class MockGithubService: UsersFetchable {
 
 final class MockUserListViewControllerViewModelDelegate: UserListViewControllerViewModelDelegate {
     
-    private(set) var args1: [UserListViewControllerViewModel] = []
+    private(set) var fetchUsersSuccessfullyArgs: [UserListViewControllerViewModel] = []
     func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
-        args1.append(viewModel)
+        fetchUsersSuccessfullyArgs.append(viewModel)
     }
     
-    private(set) var args2: [(UserListViewControllerViewModel, String)] = []
+    private(set) var fetchUsersFailArgs: [(UserListViewControllerViewModel, String)] = []
     func userListViewControllerViewModelDidFetchUsersFail(_ viewModel: UserListViewControllerViewModel, errorMessage: String) {
-        args2.append((viewModel, errorMessage))
+        fetchUsersFailArgs.append((viewModel, errorMessage))
+    }
+}
+
+final class MockLocalStorage: LocalStorage {
+    private(set) var retriveArgs: [RetrievalCompletion] = []
+    func retrieve(completion: @escaping RetrievalCompletion) {
+        retriveArgs.append(completion)
+    }
+    
+    private(set) var insertArgs: [([GithubUser], Date, InsertionCompletion)] = []
+    func insert(_ users: [GithubUser], timestamp: Date, completion: @escaping InsertionCompletion) {
+        insertArgs.append((users, timestamp, completion))
+    }
+    
+    private(set) var deleteCachedUsersArgs: [DeletionCompletion] = []
+    func deleteCachedUsers(completion: @escaping DeletionCompletion) {
+        deleteCachedUsersArgs.append(completion)
     }
 }

@@ -194,7 +194,7 @@ class CoreDataStoreTests: XCTestCase {
         }
 
         let op2 = expectation(description: "Operation 2")
-        sut.deleteCachedFeed { _ in
+        sut.deleteCachedUsers { _ in
             op2.fulfill()
         }
 
@@ -266,7 +266,7 @@ extension XCTestCase {
     func deleteCache(from sut: CoreDataStore) -> Error? {
         let exp = expectation(description: "Wait for cache deletion")
         var deletionError: Error?
-        sut.deleteCachedFeed { receivedDeletionError in
+        sut.deleteCachedUsers { receivedDeletionError in
             deletionError = receivedDeletionError
             exp.fulfill()
         }
