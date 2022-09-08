@@ -24,6 +24,7 @@ final class CoreDataStore {
 
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
+    private let lock = NSLock()
 
     struct ModelNotFound: Error {
         let modelName: String
@@ -70,34 +71,44 @@ final class CoreDataStore {
     }
 
     func insert(_ users: [GithubUser], timestamp: Date, completion: @escaping InsertionCompletion) {
-        perform { context in
-            do {
-                let managedCache = try ManagedCache.newUniqueInstance(in: context)
-                managedCache.timestamp = timestamp
-                managedCache.githubUsers = ManagedCache.managedGithubUsers(from: users, in: context)
+        perform { [weak self] context in
+            self?.lock {
+                do {
+                    let managedCache = try ManagedCache.newUniqueInstance(in: context)
+                    managedCache.timestamp = timestamp
+                    managedCache.githubUsers = ManagedCache.managedGithubUsers(from: users, in: context)
 
-                try context.save()
-                completion(nil)
-            } catch {
-                context.rollback()
-                completion(error)
+                    try context.save()
+                    completion(nil)
+                } catch {
+                    context.rollback()
+                    completion(error)
+                }
             }
         }
     }
 
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-        perform { context in
-            do {
-                try ManagedCache.find(in: context).map(context.delete).map(context.save)
-                completion(nil)
-            } catch {
-                context.rollback()
-                completion(error)
+        perform { [weak self] context in
+            self?.lock {
+                do {
+                    try ManagedCache.find(in: context).map(context.delete).map(context.save)
+                    completion(nil)
+                } catch {
+                    context.rollback()
+                    completion(error)
+                }
             }
         }
     }
 
     private func perform(action: @escaping (NSManagedObjectContext) -> Void) {
         context.perform { [context] in action(context) }
+    }
+    
+    private func lock(action: () -> Void) {
+        lock.lock()
+        action()
+        lock.unlock()
     }
 }
