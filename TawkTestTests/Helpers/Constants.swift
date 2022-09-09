@@ -15,9 +15,14 @@ func uniqueUsers() -> [GithubUser] {
     [uniqueUser(), uniqueUser()]
 }
 
+var count = 0
 func uniqueUser() -> GithubUser {
-    GithubUser(
-        login: "itopstack",
+    defer {
+        count += 1
+    }
+    
+    return GithubUser(
+        login: "itopstack_\(count)",
         id: 15520417,
         avatarUrl: "https://avatars.githubusercontent.com/u/15520417?v=4",
         url: "https://api.github.com/users/itopstack",

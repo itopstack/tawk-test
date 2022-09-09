@@ -35,27 +35,30 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.userId, 0)
         XCTAssertNil(sut.error)
         XCTAssertTrue(sut.users.isEmpty)
+        XCTAssertFalse(sut.isDataFromCached)
     }
     
     func test_fetchUsers_successfully() {
         let timestamp = Date()
-        mockService.testCase = .success
+        let users = uniqueUsers()
         
         sut.fetchUsers(timestamp: timestamp)
+        
+        mockService.fetchUsersArgs.first?.1(.success(users))
         
         XCTAssertEqual(sut.userId, 1)
         XCTAssertEqual(sut.users.count, 2)
         XCTAssertIdentical(mockDelegate.fetchUsersSuccessfullyArgs.first, sut)
         
         let first = mockLocalStorage.insertArgs.first
-        XCTAssertEqual(first?.0, uniqueUsers())
+        XCTAssertEqual(first?.0, users)
         XCTAssertEqual(first?.1, timestamp)
     }
     
     func test_fetchUsers_fail() {
-        mockService.testCase = .failure
-        
         sut.fetchUsers(timestamp: Date())
+        
+        mockService.fetchUsersArgs.first?.1(.failure(anyError))
         
         XCTAssertEqual(sut.userId, 0)
         XCTAssertNotNil(sut.error)
@@ -64,27 +67,40 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertIdentical(first?.0, sut)
         XCTAssertEqual(first?.1, anyError.localizedDescription)
     }
+    
+    func test_retrieveCached_successfully() {
+        let retriveResult: RetrieveCachedResult = .found(users: uniqueUsers(), timestamp: Date())
+        
+        sut.retrieveCached()
+        mockLocalStorage.retriveArgs.first?(retriveResult)
+        
+        XCTAssertEqual(sut.users.count, 2)
+        XCTAssertIdentical(mockDelegate.fetchUsersSuccessfullyArgs.first, sut)
+        XCTAssertTrue(sut.isDataFromCached)
+    }
+    
+    func test_retrieveCached_thenFetchUsers_successfully() {
+        let timestamp = Date()
+        let retriveResult: RetrieveCachedResult = .found(users: uniqueUsers(), timestamp: timestamp)
+        let users = uniqueUsers()
+        
+        sut.retrieveCached()
+        mockLocalStorage.retriveArgs.first?(retriveResult)
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        
+        XCTAssertEqual(sut.users.count, 2)
+        XCTAssertFalse(sut.isDataFromCached)
+    }
 }
 
 // MARK: - Mocks
 
 final class MockGithubService: UsersFetchable {
-    enum TestCase {
-        case success
-        case failure
-    }
-    
-    var testCase: TestCase?
-    
+    private(set) var fetchUsersArgs: [(Int, (Result<[GithubUser], Error>) -> Void)] = []
     func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void) {
-        switch testCase {
-        case .success:
-            completion(.success(uniqueUsers()))
-        case .failure:
-            completion(.failure(anyError))
-        default:
-            fatalError("Test case is missing")
-        }
+        fetchUsersArgs.append((since, completion))
     }
 }
 
