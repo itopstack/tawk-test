@@ -79,7 +79,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isDataFromCached)
     }
     
-    func test_retrieveCached_thenFetchUsers_successfully() {
+    func test_retrieveCachedSuccessfully_thenFetchUsersSuccessfully() {
         let timestamp = Date()
         let retriveResult: RetrieveCachedResult = .found(users: uniqueUsers(), timestamp: timestamp)
         let users = uniqueUsers()
@@ -90,6 +90,47 @@ class UserListViewControllerViewModelTests: XCTestCase {
         sut.fetchUsers(timestamp: timestamp)
         mockService.fetchUsersArgs.first?.1(.success(users))
         
+        XCTAssertEqual(sut.users.count, 2)
+        XCTAssertFalse(sut.isDataFromCached)
+    }
+    
+    func test_retrieveCachedFail_thenFetchUsersFail() {
+        let retriveResult: RetrieveCachedResult = .failure(anyError)
+        
+        sut.retrieveCached()
+        mockLocalStorage.retriveArgs.first?(retriveResult)
+        
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.failure(anyError))
+        
+        XCTAssertEqual(sut.users.count, 0)
+        XCTAssertFalse(sut.isDataFromCached)
+    }
+    
+    func test_retrieveCachedSuccessfully_thenFetchUsersFail() {
+        let timestamp = Date()
+        let retriveResult: RetrieveCachedResult = .found(users: uniqueUsers(), timestamp: timestamp)
+
+        sut.retrieveCached()
+        mockLocalStorage.retriveArgs.first?(retriveResult)
+
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.first?.1(.failure(anyError))
+
+        XCTAssertEqual(sut.users.count, 2)
+        XCTAssertTrue(sut.isDataFromCached)
+    }
+
+    func test_retrieveCachedFail_thenFetchUsersSuccessfully() {
+        let retriveResult: RetrieveCachedResult = .failure(anyError)
+        let users = uniqueUsers()
+
+        sut.retrieveCached()
+        mockLocalStorage.retriveArgs.first?(retriveResult)
+
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(users))
+
         XCTAssertEqual(sut.users.count, 2)
         XCTAssertFalse(sut.isDataFromCached)
     }
