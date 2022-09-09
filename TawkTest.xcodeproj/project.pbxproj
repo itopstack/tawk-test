@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B440193F28CB0DFA00EC541E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440193E28CB0DFA00EC541E /* UserListViewController.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
-		B4CFE21128C902E600EA0067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE21028C902E600EA0067 /* SceneDelegate.swift */; };
-		B4CFE21328C902E600EA0067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE21228C902E600EA0067 /* ViewController.swift */; };
 		B4CFE21628C902E600EA0067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21428C902E600EA0067 /* Main.storyboard */; };
 		B4CFE21828C902E800EA0067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21728C902E800EA0067 /* Assets.xcassets */; };
 		B4CFE21B28C902E800EA0067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21928C902E800EA0067 /* LaunchScreen.storyboard */; };
@@ -32,6 +31,10 @@
 		B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */; };
 		B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */; };
 		B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */; };
+		B4CFE26B28CAFD6D00EA0067 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26A28CAFD6D00EA0067 /* Coordinator.swift */; };
+		B4CFE26D28CAFE0200EA0067 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE26C28CAFE0200EA0067 /* Storyboarded.swift */; };
+		B4CFE27128CAFE8E00EA0067 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE27028CAFE8E00EA0067 /* AppCoordinator.swift */; };
+		B4CFE27328CB009E00EA0067 /* UserListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE27228CB009E00EA0067 /* UserListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B440193E28CB0DFA00EC541E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CFE20E28C902E600EA0067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4CFE21028C902E600EA0067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B4CFE21228C902E600EA0067 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B4CFE21528C902E600EA0067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4CFE21728C902E800EA0067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CFE21A28C902E800EA0067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,10 @@
 		B4CFE26028C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerViewModel.swift; sourceTree = "<group>"; };
 		B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerViewModelTests.swift; sourceTree = "<group>"; };
+		B4CFE26A28CAFD6D00EA0067 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B4CFE26C28CAFE0200EA0067 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		B4CFE27028CAFE8E00EA0067 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B4CFE27228CB009E00EA0067 /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +120,13 @@
 		B4CFE20D28C902E600EA0067 /* TawkTest */ = {
 			isa = PBXGroup;
 			children = (
+				B4CFE26F28CAFE7900EA0067 /* Coordinators */,
+				B4CFE26E28CAFE6000EA0067 /* Helpers */,
 				B4CFE26228C9F91400EA0067 /* Screens */,
 				B4CFE24928C9B69A00EA0067 /* CoreData */,
 				B4CFE23528C99ED200EA0067 /* Services */,
 				B4CFE22228C9049D00EA0067 /* Models */,
 				B4CFE20E28C902E600EA0067 /* AppDelegate.swift */,
-				B4CFE21028C902E600EA0067 /* SceneDelegate.swift */,
-				B4CFE21228C902E600EA0067 /* ViewController.swift */,
 				B4CFE21428C902E600EA0067 /* Main.storyboard */,
 				B4CFE21728C902E800EA0067 /* Assets.xcassets */,
 				B4CFE21928C902E800EA0067 /* LaunchScreen.storyboard */,
@@ -227,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */,
+				B440193E28CB0DFA00EC541E /* UserListViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -237,6 +244,24 @@
 				B4CFE26828C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		B4CFE26E28CAFE6000EA0067 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26C28CAFE0200EA0067 /* Storyboarded.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B4CFE26F28CAFE7900EA0067 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B4CFE26A28CAFD6D00EA0067 /* Coordinator.swift */,
+				B4CFE27028CAFE8E00EA0067 /* AppCoordinator.swift */,
+				B4CFE27228CB009E00EA0067 /* UserListCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,17 +367,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4CFE25228C9BB2C00EA0067 /* CoreDataStore.swift in Sources */,
+				B440193F28CB0DFA00EC541E /* UserListViewController.swift in Sources */,
 				B4CFE23928C99FAD00EA0067 /* MyError.swift in Sources */,
+				B4CFE26B28CAFD6D00EA0067 /* Coordinator.swift in Sources */,
+				B4CFE27328CB009E00EA0067 /* UserListCoordinator.swift in Sources */,
 				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
-				B4CFE21328C902E600EA0067 /* ViewController.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
 				B4CFE24C28C9B6C200EA0067 /* DataModel.xcdatamodeld in Sources */,
 				B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */,
 				B4CFE23728C99EF000EA0067 /* GithubService.swift in Sources */,
 				B4CFE25428C9BC9C00EA0067 /* ManagedGithubUser.swift in Sources */,
 				B4CFE25028C9BA6F00EA0067 /* CoreDataHelpers.swift in Sources */,
-				B4CFE21128C902E600EA0067 /* SceneDelegate.swift in Sources */,
+				B4CFE27128CAFE8E00EA0067 /* AppCoordinator.swift in Sources */,
+				B4CFE26D28CAFE0200EA0067 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +556,6 @@
 				INFOPLIST_FILE = TawkTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -556,7 +583,6 @@
 				INFOPLIST_FILE = TawkTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
