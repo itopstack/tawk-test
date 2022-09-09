@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B440193F28CB0DFA00EC541E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440193E28CB0DFA00EC541E /* UserListViewController.swift */; };
+		B440194428CB3E6000EC541E /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194328CB3E6000EC541E /* NormalCell.swift */; };
+		B440194628CB3E8F00EC541E /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194528CB3E8F00EC541E /* NoteCell.swift */; };
+		B440194828CB3EA900EC541E /* InvertedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194728CB3EA900EC541E /* InvertedCell.swift */; };
+		B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194928CB3ED400EC541E /* LoadingCell.swift */; };
+		B440194C28CB3FF500EC541E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194B28CB3FF500EC541E /* UserCell.swift */; };
+		B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194D28CB42E300EC541E /* InvertedNoteCell.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
 		B4CFE21628C902E600EA0067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21428C902E600EA0067 /* Main.storyboard */; };
 		B4CFE21828C902E800EA0067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21728C902E800EA0067 /* Assets.xcassets */; };
@@ -49,6 +55,12 @@
 
 /* Begin PBXFileReference section */
 		B440193E28CB0DFA00EC541E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		B440194328CB3E6000EC541E /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
+		B440194528CB3E8F00EC541E /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		B440194728CB3EA900EC541E /* InvertedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedCell.swift; sourceTree = "<group>"; };
+		B440194928CB3ED400EC541E /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		B440194B28CB3FF500EC541E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		B440194D28CB42E300EC541E /* InvertedNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedNoteCell.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CFE20E28C902E600EA0067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4CFE21528C902E600EA0067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +111,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B440194228CB3DD100EC541E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B440194328CB3E6000EC541E /* NormalCell.swift */,
+				B440194528CB3E8F00EC541E /* NoteCell.swift */,
+				B440194728CB3EA900EC541E /* InvertedCell.swift */,
+				B440194D28CB42E300EC541E /* InvertedNoteCell.swift */,
+				B440194928CB3ED400EC541E /* LoadingCell.swift */,
+				B440194B28CB3FF500EC541E /* UserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B4CFE20228C902E600EA0067 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +257,7 @@
 		B4CFE26628C9FAD300EA0067 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				B440194228CB3DD100EC541E /* Cells */,
 				B4CFE26328C9F93500EA0067 /* UserListViewControllerViewModel.swift */,
 				B440193E28CB0DFA00EC541E /* UserListViewController.swift */,
 			);
@@ -369,18 +395,24 @@
 				B4CFE25228C9BB2C00EA0067 /* CoreDataStore.swift in Sources */,
 				B440193F28CB0DFA00EC541E /* UserListViewController.swift in Sources */,
 				B4CFE23928C99FAD00EA0067 /* MyError.swift in Sources */,
+				B440194628CB3E8F00EC541E /* NoteCell.swift in Sources */,
 				B4CFE26B28CAFD6D00EA0067 /* Coordinator.swift in Sources */,
+				B440194428CB3E6000EC541E /* NormalCell.swift in Sources */,
 				B4CFE27328CB009E00EA0067 /* UserListCoordinator.swift in Sources */,
 				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
+				B440194C28CB3FF500EC541E /* UserCell.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
 				B4CFE24C28C9B6C200EA0067 /* DataModel.xcdatamodeld in Sources */,
+				B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */,
 				B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */,
 				B4CFE23728C99EF000EA0067 /* GithubService.swift in Sources */,
 				B4CFE25428C9BC9C00EA0067 /* ManagedGithubUser.swift in Sources */,
+				B440194828CB3EA900EC541E /* InvertedCell.swift in Sources */,
 				B4CFE25028C9BA6F00EA0067 /* CoreDataHelpers.swift in Sources */,
 				B4CFE27128CAFE8E00EA0067 /* AppCoordinator.swift in Sources */,
 				B4CFE26D28CAFE0200EA0067 /* Storyboarded.swift in Sources */,
+				B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

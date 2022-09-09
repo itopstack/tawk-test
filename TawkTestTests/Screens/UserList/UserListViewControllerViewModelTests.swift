@@ -36,6 +36,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertNil(sut.error)
         XCTAssertTrue(sut.users.isEmpty)
         XCTAssertFalse(sut.isDataFromCached)
+        XCTAssertTrue(sut.userCells.isEmpty)
     }
     
     func test_fetchUsers_successfully() {
@@ -133,6 +134,53 @@ class UserListViewControllerViewModelTests: XCTestCase {
 
         XCTAssertEqual(sut.users.count, 2)
         XCTAssertFalse(sut.isDataFromCached)
+    }
+    
+    func test_userCells_updatedWhenGithubUsersAreChanged() {
+        let users = [uniqueUser()]
+        let timestamp = Date()
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        XCTAssertEqual(sut.users.count, sut.userCells.count)
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.last?.1(.success(users))
+        XCTAssertEqual(sut.users.count, sut.userCells.count)
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.last?.1(.success(users))
+        XCTAssertEqual(sut.users.count, sut.userCells.count)
+        
+        XCTAssertEqual(sut.userCells.count, 3)
+    }
+    
+    func test_userCells_typeAreCorrectBasedGithubUsers() {
+        var users: [GithubUser] = []
+        for i in 0..<8 {
+            users.append(uniqueUser())
+            
+            if i == 1 || i == 7 {
+                users[i].note = "some note"
+            }
+        }
+        
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        
+        XCTAssertEqual(sut.userCells.count, 8)
+        XCTAssertTrue(sut.userCells[0][0] is NormalCell)
+        XCTAssertTrue(sut.userCells[1][0] is NoteCell)
+        XCTAssertTrue(sut.userCells[2][0] is NormalCell)
+        XCTAssertTrue(sut.userCells[3][0] is InvertedCell)
+        XCTAssertTrue(sut.userCells[4][0] is NormalCell)
+        XCTAssertTrue(sut.userCells[5][0] is NormalCell)
+        XCTAssertTrue(sut.userCells[6][0] is NormalCell)
+        XCTAssertTrue(sut.userCells[7][0] is InvertedNoteCell)
+        
+        sut.userCells.forEach { cell in
+            XCTAssertNotNil(cell[0].user)
+        }
     }
 }
 

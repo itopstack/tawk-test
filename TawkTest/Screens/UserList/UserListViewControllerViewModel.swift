@@ -19,8 +19,39 @@ final class UserListViewControllerViewModel {
     
     private(set) var userId = 0
     private(set) var error: Error?
-    private(set) var users: [GithubUser] = []
+    
+    private(set) var users: [GithubUser] = [] {
+        didSet {
+            var userCells: [[UserCell]] = []
+            
+            for i in 0..<users.count {
+                let user = users[i]
+                let cell: UserCell
+                
+                if i % 4 == 3 { // inverted cell
+                    if user.note != nil { // with note
+                        cell = InvertedNoteCell()
+                    } else { // without note
+                        cell = InvertedCell()
+                    }
+                } else { // normal cell
+                    if user.note != nil { // with note
+                        cell = NoteCell()
+                    } else { // without note
+                        cell = NormalCell()
+                    }
+                }
+                
+                cell.user = user
+                userCells.append([cell])
+            }
+            
+            self.userCells = userCells
+        }
+    }
+    
     private(set) var isDataFromCached = false
+    private(set) var userCells: [[UserCell]] = []
     
     init(service: UsersFetchable = GithubService(),
          localStorage: LocalStorage,
