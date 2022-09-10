@@ -29,12 +29,12 @@ final class ImageDownloader: ImageDownloadable {
             return completion(nil)
         }
         
-        lock.lock()
         session.request(with: url) { [weak self] data, _, _ in
             if let data = data {
+                self?.lock.lock() // Prevent race condition
                 self?.cached[urlString] = data
+                self?.lock.unlock()
             }
-            self?.lock.unlock()
             
             DispatchQueue.main.async {
                 completion(data)

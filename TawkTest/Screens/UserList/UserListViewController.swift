@@ -66,6 +66,20 @@ final class UserListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         tableView.dequeueReusableHeaderFooterView(withIdentifier: NSStringFromClass(SpacingView.self))
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        
+        if indexPath.section == lastSectionIndex && indexPath.row == lastRowIndex {
+            let spinner = UIActivityIndicatorView(style: .medium)
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
+            tableView.tableFooterView = spinner
+            
+            viewModel.fetchUsers(timestamp: Date())
+        }
+    }
 }
 
 // MARK: - UserListViewControllerViewModelDelegate
@@ -73,6 +87,7 @@ final class UserListViewController: UITableViewController {
 extension UserListViewController: UserListViewControllerViewModelDelegate {
     func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
         tableView.reloadData()
+        tableView.tableFooterView = nil
     }
     
     func userListViewControllerViewModelDidFetchUsersFail(_ viewModel: UserListViewControllerViewModel, errorMessage: String) {

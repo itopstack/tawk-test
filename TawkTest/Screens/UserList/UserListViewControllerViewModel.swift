@@ -18,7 +18,7 @@ final class UserListViewControllerViewModel {
     private let imageDownloader: ImageDownloadable
     private weak var delegate: UserListViewControllerViewModelDelegate?
     
-    private(set) var userId = 0
+    private(set) var lastId = 0
     private(set) var error: Error?
     
     private(set) var users: [GithubUser] = [] {
@@ -64,12 +64,14 @@ final class UserListViewControllerViewModel {
     }
     
     func fetchUsers(timestamp: Date) {
-        githubService.fetchUsers(since: userId) { [weak self] result in
+        githubService.fetchUsers(since: lastId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case let .success(users):
-                self.userId += 1
+                if let lastId = users.last?.id {
+                    self.lastId = lastId
+                }
                 
                 if self.isDataFromCached {
                     self.users = users
