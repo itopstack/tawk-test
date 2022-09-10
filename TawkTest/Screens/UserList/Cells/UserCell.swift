@@ -9,4 +9,6 @@ import Foundation
 
 protocol UserCell: AnyObject {
     var user: GithubUser? { get set }
+    
+    func configure()
 }

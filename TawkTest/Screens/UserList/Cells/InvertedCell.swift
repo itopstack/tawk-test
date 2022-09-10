@@ -9,4 +9,8 @@ import UIKit
 
 final class InvertedCell: UITableViewCell, UserCell {
     var user: GithubUser?
+    
+    func configure() {
+        
+    }
 }

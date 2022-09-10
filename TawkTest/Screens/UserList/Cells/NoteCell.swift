@@ -9,4 +9,8 @@ import UIKit
 
 final class NoteCell: UITableViewCell, UserCell {
     var user: GithubUser?
+    
+    func configure() {
+        
+    }
 }

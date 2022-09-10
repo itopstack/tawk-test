@@ -14,6 +14,10 @@
 		B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194928CB3ED400EC541E /* LoadingCell.swift */; };
 		B440194C28CB3FF500EC541E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194B28CB3FF500EC541E /* UserCell.swift */; };
 		B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194D28CB42E300EC541E /* InvertedNoteCell.swift */; };
+		B440195128CC48A100EC541E /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* NormalView.swift */; };
+		B440195328CC48BF00EC541E /* InvertedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195228CC48BF00EC541E /* InvertedView.swift */; };
+		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
+		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
 		B4CFE21628C902E600EA0067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21428C902E600EA0067 /* Main.storyboard */; };
 		B4CFE21828C902E800EA0067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CFE21728C902E800EA0067 /* Assets.xcassets */; };
@@ -61,6 +65,10 @@
 		B440194928CB3ED400EC541E /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		B440194B28CB3FF500EC541E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B440194D28CB42E300EC541E /* InvertedNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedNoteCell.swift; sourceTree = "<group>"; };
+		B440195028CC48A100EC541E /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
+		B440195228CC48BF00EC541E /* InvertedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedView.swift; sourceTree = "<group>"; };
+		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CFE20E28C902E600EA0067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4CFE21528C902E600EA0067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 		B440194228CB3DD100EC541E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B440194F28CC486F00EC541E /* Views */,
 				B440194328CB3E6000EC541E /* NormalCell.swift */,
 				B440194528CB3E8F00EC541E /* NoteCell.swift */,
 				B440194728CB3EA900EC541E /* InvertedCell.swift */,
@@ -122,6 +131,15 @@
 				B440194B28CB3FF500EC541E /* UserCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B440194F28CC486F00EC541E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B440195028CC48A100EC541E /* NormalView.swift */,
+				B440195228CC48BF00EC541E /* InvertedView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B4CFE20228C902E600EA0067 = {
@@ -276,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE26C28CAFE0200EA0067 /* Storyboarded.swift */,
+				B45C291228CC4B38000EEBD9 /* Views.swift */,
+				B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -400,16 +420,20 @@
 				B440194428CB3E6000EC541E /* NormalCell.swift in Sources */,
 				B4CFE27328CB009E00EA0067 /* UserListCoordinator.swift in Sources */,
 				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
+				B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */,
 				B440194C28CB3FF500EC541E /* UserCell.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
+				B440195128CC48A100EC541E /* NormalView.swift in Sources */,
 				B4CFE24C28C9B6C200EA0067 /* DataModel.xcdatamodeld in Sources */,
 				B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */,
 				B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */,
 				B4CFE23728C99EF000EA0067 /* GithubService.swift in Sources */,
 				B4CFE25428C9BC9C00EA0067 /* ManagedGithubUser.swift in Sources */,
+				B440195328CC48BF00EC541E /* InvertedView.swift in Sources */,
 				B440194828CB3EA900EC541E /* InvertedCell.swift in Sources */,
 				B4CFE25028C9BA6F00EA0067 /* CoreDataHelpers.swift in Sources */,
+				B45C291328CC4B38000EEBD9 /* Views.swift in Sources */,
 				B4CFE27128CAFE8E00EA0067 /* AppCoordinator.swift in Sources */,
 				B4CFE26D28CAFE0200EA0067 /* Storyboarded.swift in Sources */,
 				B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */,
