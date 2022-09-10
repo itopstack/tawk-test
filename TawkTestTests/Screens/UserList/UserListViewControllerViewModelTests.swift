@@ -217,6 +217,14 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 6)), .normal(users[6]))
         XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 7)), .invertedNote(users[7]))
     }
+    
+    func test_heightForRowAtIndexPath() {
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
+        
+        XCTAssertEqual(sut.heightForRowAt(indexPath: IndexPath(row: 0, section: 0)), 76)
+        XCTAssertEqual(sut.heightForRowAt(indexPath: IndexPath(row: 0, section: 1)), 76)
+    }
 }
 
 // MARK: - Mocks

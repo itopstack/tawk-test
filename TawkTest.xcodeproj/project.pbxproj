@@ -17,6 +17,7 @@
 		B440195128CC48A100EC541E /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* NormalView.swift */; };
 		B440195328CC48BF00EC541E /* InvertedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195228CC48BF00EC541E /* InvertedView.swift */; };
 		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
+		B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */; };
 		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
 		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		B440195028CC48A100EC541E /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
 		B440195228CC48BF00EC541E /* InvertedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedView.swift; sourceTree = "<group>"; };
 		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
+		B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCells.swift; sourceTree = "<group>"; };
 		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +301,7 @@
 				B4CFE26C28CAFE0200EA0067 /* Storyboarded.swift */,
 				B45C291228CC4B38000EEBD9 /* Views.swift */,
 				B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */,
+				B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4CFE25228C9BB2C00EA0067 /* CoreDataStore.swift in Sources */,
+				B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */,
 				B440193F28CB0DFA00EC541E /* UserListViewController.swift in Sources */,
 				B4CFE23928C99FAD00EA0067 /* MyError.swift in Sources */,
 				B440194628CB3E8F00EC541E /* NoteCell.swift in Sources */,

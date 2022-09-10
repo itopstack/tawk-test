@@ -38,4 +38,14 @@ enum UserCell: CaseIterable, Equatable {
             .invertedNote(.default)
         ]
     }
+    
+    var user: GithubUser {
+        switch self {
+        case .normal(let githubUser),
+             .note(let githubUser),
+             .inverted(let githubUser),
+             .invertedNote(let githubUser):
+            return githubUser
+        }
+    }
 }

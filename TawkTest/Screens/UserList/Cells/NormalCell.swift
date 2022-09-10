@@ -7,9 +7,7 @@
 
 import UIKit
 
-final class NormalCell: UITableViewCell {
-    var user: GithubUser?
-    
+final class NormalCell: UITableViewCell, CellConfigurable {
     private var normalView: NormalView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,7 +25,7 @@ final class NormalCell: UITableViewCell {
         normalView.add(to: contentView)
     }
     
-    func configure() {
-        normalView.configure(with: user)
+    func configure(with model: GithubUser) {
+        normalView.configure(with: model)
     }
 }

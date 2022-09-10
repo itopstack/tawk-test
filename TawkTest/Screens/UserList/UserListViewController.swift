@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListViewControllerDelegate: AnyObject {
-    
+    func userListViewController(_ vc: UIViewController, didSelect user: GithubUser)
 }
 
 final class UserListViewController: UITableViewController {
@@ -39,12 +39,18 @@ final class UserListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userCell = viewModel.userCell(for: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: userCell.cellIdentifier, for: indexPath)
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: userCell.cellIdentifier, for: indexPath) as? CellConfigurable
+        cell?.configure(with: userCell.user)
+        return cell ?? UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedUser = viewModel.userCell(for: indexPath).user
+        coordinator?.userListViewController(self, didSelect: selectedUser)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CGFloat(viewModel.heightForRowAt(indexPath: indexPath))
     }
 }
 

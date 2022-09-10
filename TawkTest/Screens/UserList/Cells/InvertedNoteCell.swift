@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class InvertedNoteCell: UITableViewCell {
-    var user: GithubUser?
-    
-    func configure() {
+final class InvertedNoteCell: UITableViewCell, CellConfigurable {
+    func configure(with model: GithubUser) {
         
     }
 }

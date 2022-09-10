@@ -37,5 +37,7 @@ final class UserListCoordinator: Coordinator {
 }
 
 extension UserListCoordinator: UserListViewControllerDelegate {
-    
+    func userListViewController(_ vc: UIViewController, didSelect user: GithubUser) {
+        
+    }
 }

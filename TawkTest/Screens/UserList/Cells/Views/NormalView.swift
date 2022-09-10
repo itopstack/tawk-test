@@ -32,7 +32,6 @@ final class NormalView: UIView {
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             avatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 60),
             avatarImageView.widthAnchor.constraint(equalToConstant: 60),
             avatarImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])

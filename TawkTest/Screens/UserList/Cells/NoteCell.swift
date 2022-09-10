@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class NoteCell: UITableViewCell {
-    var user: GithubUser?
-    
-    func configure() {
+final class NoteCell: UITableViewCell, CellConfigurable {
+    func configure(with model: GithubUser) {
         
     }
 }
