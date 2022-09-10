@@ -23,35 +23,34 @@ final class UserListViewControllerViewModel {
     
     private(set) var users: [GithubUser] = [] {
         didSet {
-            var userCells: [[UserCell]] = []
-            
-            for i in 0..<users.count {
-                let user = users[i]
-                let userCell: UserCell
-                
-                if i % 4 == 3 { // inverted cell
-                    if user.note != nil { // with note
-                        userCell = .invertedNote(user)
-                    } else { // without note
-                        userCell = .inverted(user)
-                    }
-                } else { // normal cell
-                    if user.note != nil { // with note
-                        userCell = .note(user)
-                    } else { // without note
-                        userCell = .normal(user)
-                    }
-                }
-                
-                userCells.append([userCell])
-            }
-            
-            self.userCells = userCells
+            self.userCells = buildUserCells(from: users)
         }
     }
     
     private(set) var isDataFromCached = false
     private(set) var userCells: [[UserCell]] = []
+    
+    var filteredUserCells: [[UserCell]] {
+        if searchText.isEmpty {
+            return userCells
+        } else {
+            let searchText = searchText.lowercased()
+            let filteredUsers = users.filter { user in
+                if user.login.lowercased().contains(searchText) {
+                    return true
+                }
+                if let note = user.note {
+                    return note.lowercased().contains(searchText)
+                }
+                return false
+            }
+            
+            let filteredUserCells = buildUserCells(from: filteredUsers)
+            return filteredUserCells
+        }
+    }
+    
+    var searchText = ""
     
     init(service: UsersFetchable = GithubService(),
          localStorage: LocalStorage,
@@ -61,6 +60,33 @@ final class UserListViewControllerViewModel {
         self.delegate = delegate
         self.imageDownloader = imageDowdloader
         self.localStorage = localStorage
+    }
+    
+    private func buildUserCells(from users: [GithubUser]) -> [[UserCell]] {
+        var userCells: [[UserCell]] = []
+        
+        for i in 0..<users.count {
+            let user = users[i]
+            let userCell: UserCell
+            
+            if i % 4 == 3 { // inverted cell
+                if user.note != nil { // with note
+                    userCell = .invertedNote(user)
+                } else { // without note
+                    userCell = .inverted(user)
+                }
+            } else { // normal cell
+                if user.note != nil { // with note
+                    userCell = .note(user)
+                } else { // without note
+                    userCell = .normal(user)
+                }
+            }
+            
+            userCells.append([userCell])
+        }
+        
+        return userCells
     }
     
     func fetchUsers(timestamp: Date) {
@@ -110,15 +136,15 @@ final class UserListViewControllerViewModel {
     }
     
     func numberOfSections() -> Int {
-        userCells.count
+        filteredUserCells.count
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        userCells[section].count
+        filteredUserCells[section].count
     }
     
     func userCell(for indexPath: IndexPath) -> UserCell {
-        userCells[indexPath.section][indexPath.row]
+        filteredUserCells[indexPath.section][indexPath.row]
     }
     
     func heightForRowAt(indexPath: IndexPath) -> Float {
@@ -127,5 +153,9 @@ final class UserListViewControllerViewModel {
     
     func heightForFooter(in section: Int) -> Float {
         8.0
+    }
+    
+    var allowLoadMore: Bool {
+        searchText.isEmpty
     }
 }

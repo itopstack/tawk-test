@@ -47,6 +47,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertTrue(sut.users.isEmpty)
         XCTAssertFalse(sut.isDataFromCached)
         XCTAssertTrue(sut.userCells.isEmpty)
+        XCTAssertTrue(sut.searchText.isEmpty)
     }
     
     func test_fetchUsers_successfully() {
@@ -262,6 +263,46 @@ class UserListViewControllerViewModelTests: XCTestCase {
         
         XCTAssertEqual(mockImageDownloader.fetchImageArgs.first?.0, urlString)
         XCTAssertEqual(receivedData, data)
+    }
+    
+    func test_allowLoadMore() {
+        sut.searchText = ""
+        XCTAssertTrue(sut.allowLoadMore)
+        
+        sut.searchText = "tawk"
+        XCTAssertFalse(sut.allowLoadMore)
+    }
+    
+    func test_filteredUserCells_whileNotSearch() {
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
+        
+        sut.searchText = ""
+        
+        XCTAssertEqual(sut.filteredUserCells.count, 2)
+    }
+    
+    func test_filteredUserCells_whileSearching() {
+        var users = uniqueUsers()
+        users.append(
+            GithubUser(
+                login: "newuser",
+                id: 15520417,
+                avatarUrl: "https://avatars.githubusercontent.com/u/15520417?v=4",
+                url: "https://api.github.com/users/itopstack",
+                followersUrl: "https://api.github.com/users/itopstack/followers",
+                organizationsUrl: "https://api.github.com/users/itopstack/orgs",
+                reposUrl: "https://api.github.com/users/itopstack/repos",
+                type: "User",
+                siteAdmin: false
+            )
+        ) // total users is 3
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        
+        sut.searchText = "new"
+        
+        XCTAssertEqual(sut.filteredUserCells.count, 1)
     }
 }
 

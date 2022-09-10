@@ -11,9 +11,17 @@ protocol UserListViewControllerDelegate: AnyObject {
     func userListViewController(_ vc: UIViewController, didSelect user: GithubUser)
 }
 
-final class UserListViewController: UITableViewController {
+final class UserListViewController: UITableViewController, UISearchResultsUpdating {
     weak var coordinator: (Coordinator & UserListViewControllerDelegate)?
     var viewModel: UserListViewControllerViewModel!
+    
+    private lazy var resultSearchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.sizeToFit()
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +35,7 @@ final class UserListViewController: UITableViewController {
         }
         tableView.register(SpacingView.self, forHeaderFooterViewReuseIdentifier: NSStringFromClass(SpacingView.self)) // for spacing view between each cell
         tableView.separatorColor = .clear
+        tableView.tableHeaderView = resultSearchController.searchBar
         
         viewModel.fetchUsers(timestamp: Date())
     }
@@ -68,6 +77,8 @@ final class UserListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard viewModel.allowLoadMore else { return }
+        
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         
@@ -78,6 +89,15 @@ final class UserListViewController: UITableViewController {
             tableView.tableFooterView = spinner
             
             viewModel.fetchUsers(timestamp: Date())
+        }
+    }
+    
+    // MARK: - UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            viewModel.searchText = text
+            tableView.reloadData()
         }
     }
 }
