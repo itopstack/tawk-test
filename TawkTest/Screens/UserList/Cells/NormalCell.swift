@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class NormalCell: UITableViewCell, CellConfigurable {
-    private var normalView: NormalView!
+class NormalCell: UITableViewCell, CellConfigurable {
+    private(set) var normalView: NormalView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,6 +32,7 @@ final class NormalCell: UITableViewCell, CellConfigurable {
     }
     
     func updateAvatarImage(from data: Data?) {
+        normalView.avatarMode = .normal
         normalView.updateAvatarImage(from: data)
     }
 }

@@ -15,7 +15,6 @@
 		B440194C28CB3FF500EC541E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194B28CB3FF500EC541E /* UserCell.swift */; };
 		B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194D28CB42E300EC541E /* InvertedNoteCell.swift */; };
 		B440195128CC48A100EC541E /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* NormalView.swift */; };
-		B440195328CC48BF00EC541E /* InvertedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195228CC48BF00EC541E /* InvertedView.swift */; };
 		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
 		B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */; };
 		B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */; };
@@ -71,7 +70,6 @@
 		B440194B28CB3FF500EC541E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B440194D28CB42E300EC541E /* InvertedNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedNoteCell.swift; sourceTree = "<group>"; };
 		B440195028CC48A100EC541E /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
-		B440195228CC48BF00EC541E /* InvertedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedView.swift; sourceTree = "<group>"; };
 		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
 		B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCells.swift; sourceTree = "<group>"; };
 		B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingView.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				B440195028CC48A100EC541E /* NormalView.swift */,
-				B440195228CC48BF00EC541E /* InvertedView.swift */,
 				B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */,
 			);
 			path = Views;
@@ -447,7 +444,6 @@
 				B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */,
 				B4CFE23728C99EF000EA0067 /* GithubService.swift in Sources */,
 				B4CFE25428C9BC9C00EA0067 /* ManagedGithubUser.swift in Sources */,
-				B440195328CC48BF00EC541E /* InvertedView.swift in Sources */,
 				B440194828CB3EA900EC541E /* InvertedCell.swift in Sources */,
 				B4CFE25028C9BA6F00EA0067 /* CoreDataHelpers.swift in Sources */,
 				B45C291328CC4B38000EEBD9 /* Views.swift in Sources */,

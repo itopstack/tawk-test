@@ -8,8 +8,15 @@
 import UIKit
 
 final class NormalView: UIView {
+    enum AvatarMode {
+        case normal
+        case inverted
+    }
+    
     private var usernameLabel: UILabel!
     private var avatarImageView: CircleImageView!
+    
+    var avatarMode: AvatarMode?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,8 +61,25 @@ final class NormalView: UIView {
     }
     
     func updateAvatarImage(from data: Data?) {
-        if let data = data {
-            avatarImageView.image = UIImage(data: data)
+        guard let data = data else {
+            return
         }
+        
+        let image = UIImage(data: data)
+        
+        if case .inverted = avatarMode {
+            let beginImage = CIImage(image: image ?? UIImage())
+            
+            if let filter = CIFilter(name: "CIColorInvert") {
+                filter.setValue(beginImage, forKey: kCIInputImageKey)
+                
+                if let outputImage = filter.outputImage {
+                    avatarImageView.image = UIImage(ciImage: outputImage)
+                    return
+                }
+            }
+        }
+        
+        avatarImageView.image = image
     }
 }
