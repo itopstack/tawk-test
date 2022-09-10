@@ -225,6 +225,16 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.heightForRowAt(indexPath: IndexPath(row: 0, section: 0)), 76)
         XCTAssertEqual(sut.heightForRowAt(indexPath: IndexPath(row: 0, section: 1)), 76)
     }
+    
+    func test() {
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
+        
+        var section = 0
+        XCTAssertEqual(sut.heightForFooter(in: section), 8)
+        section = 1
+        XCTAssertEqual(sut.heightForFooter(in: section), 8)
+    }
 }
 
 // MARK: - Mocks

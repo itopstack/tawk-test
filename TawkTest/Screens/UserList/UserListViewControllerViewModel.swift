@@ -115,4 +115,8 @@ final class UserListViewControllerViewModel {
     func heightForRowAt(indexPath: IndexPath) -> Float {
         76.0
     }
+    
+    func heightForFooter(in section: Int) -> Float {
+        8.0
+    }
 }

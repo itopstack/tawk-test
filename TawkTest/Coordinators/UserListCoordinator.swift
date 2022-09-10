@@ -32,6 +32,7 @@ final class UserListCoordinator: Coordinator {
         let viewModel = UserListViewControllerViewModel(localStorage: localStorage, delegate: vc)
         vc.viewModel = viewModel
         vc.coordinator = self
+        vc.title = "Github Users"
         navigationController.pushViewController(vc, animated: false)
     }
 }

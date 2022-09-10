@@ -25,6 +25,8 @@ final class UserListViewController: UITableViewController {
         UserCell.allCases.forEach { userCell in
             tableView.register(userCell.cellClass, forCellReuseIdentifier: userCell.cellIdentifier)
         }
+        tableView.register(SpacingView.self, forHeaderFooterViewReuseIdentifier: NSStringFromClass(SpacingView.self)) // for spacing view between each cell
+        tableView.separatorColor = .clear
         
         viewModel.fetchUsers(timestamp: Date())
     }
@@ -51,6 +53,14 @@ final class UserListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat(viewModel.heightForRowAt(indexPath: indexPath))
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        CGFloat(viewModel.heightForFooter(in: section))
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        tableView.dequeueReusableHeaderFooterView(withIdentifier: NSStringFromClass(SpacingView.self))
     }
 }
 

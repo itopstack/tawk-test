@@ -21,8 +21,10 @@ final class NormalCell: UITableViewCell, CellConfigurable {
     }
     
     private func setupView() {
+        selectionStyle = .none
+        
         normalView = NormalView()
-        normalView.add(to: contentView)
+        normalView.add(to: contentView, insets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
     }
     
     func configure(with model: GithubUser) {

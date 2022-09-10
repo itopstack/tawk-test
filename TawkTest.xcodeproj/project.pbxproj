@@ -18,6 +18,7 @@
 		B440195328CC48BF00EC541E /* InvertedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195228CC48BF00EC541E /* InvertedView.swift */; };
 		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
 		B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */; };
+		B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */; };
 		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
 		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		B440195228CC48BF00EC541E /* InvertedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedView.swift; sourceTree = "<group>"; };
 		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
 		B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCells.swift; sourceTree = "<group>"; };
+		B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingView.swift; sourceTree = "<group>"; };
 		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 			children = (
 				B440195028CC48A100EC541E /* NormalView.swift */,
 				B440195228CC48BF00EC541E /* InvertedView.swift */,
+				B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
 				B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */,
 				B440194C28CB3FF500EC541E /* UserCell.swift in Sources */,
+				B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
 				B440195128CC48A100EC541E /* NormalView.swift in Sources */,
