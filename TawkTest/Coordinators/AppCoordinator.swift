@@ -16,13 +16,13 @@ final class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let userListCoordinator = UserListCoordinator(navigationController: navigationController)
-        userListCoordinator.parent = self
-        userListCoordinator.start()
-        addChild(userListCoordinator)
+        let usersFlowCoordinator = UsersFlowCoordinator(navigationController: navigationController)
+        usersFlowCoordinator.parent = self
+        usersFlowCoordinator.start()
+        addChild(usersFlowCoordinator)
     }
 }
 
-extension AppCoordinator: UserListCoordinatorDelegate {
+extension AppCoordinator: UsersFlowCoordinatorDelegate {
     
 }
