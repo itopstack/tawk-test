@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NormalView: UIView {
+final class BaseView: UIView {
     enum AvatarMode {
         case normal
         case inverted

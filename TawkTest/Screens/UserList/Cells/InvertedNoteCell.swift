@@ -7,12 +7,9 @@
 
 import UIKit
 
-final class InvertedNoteCell: UITableViewCell, CellConfigurable {
-    func configure(with model: GithubUser) {
-        
-    }
-    
-    func updateAvatarImage(from data: Data?) {
-        
+final class InvertedNoteCell: NoteCell {
+    override func updateAvatarImage(from data: Data?) {
+        baseView.avatarMode = .inverted
+        baseView.updateAvatarImage(from: data)
     }
 }

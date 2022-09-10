@@ -8,7 +8,7 @@
 import UIKit
 
 class NormalCell: UITableViewCell, CellConfigurable {
-    private(set) var normalView: NormalView!
+    private(set) var baseView: BaseView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,19 +20,19 @@ class NormalCell: UITableViewCell, CellConfigurable {
         setupView()
     }
     
-    private func setupView() {
+    func setupView() {
         selectionStyle = .none
         
-        normalView = NormalView()
-        normalView.add(to: contentView, insets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
+        baseView = BaseView()
+        baseView.add(to: contentView, insets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
     }
     
     func configure(with model: GithubUser) {
-        normalView.configure(with: model)
+        baseView.configure(with: model)
     }
     
     func updateAvatarImage(from data: Data?) {
-        normalView.avatarMode = .normal
-        normalView.updateAvatarImage(from: data)
+        baseView.avatarMode = .normal
+        baseView.updateAvatarImage(from: data)
     }
 }

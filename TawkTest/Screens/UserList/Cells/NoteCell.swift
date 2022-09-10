@@ -7,12 +7,18 @@
 
 import UIKit
 
-final class NoteCell: UITableViewCell, CellConfigurable {
-    func configure(with model: GithubUser) {
+class NoteCell: NormalCell {
+    override func setupView() {
+        super.setupView()
         
-    }
-    
-    func updateAvatarImage(from data: Data?) {
+        let noteImage = UIImage(systemName: "note")
+        let noteImageView = UIImageView(image: noteImage)
+        noteImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(noteImageView)
         
+        NSLayoutConstraint.activate([
+            noteImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            noteImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ])
     }
 }

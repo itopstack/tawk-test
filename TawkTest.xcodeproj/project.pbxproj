@@ -14,7 +14,7 @@
 		B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194928CB3ED400EC541E /* LoadingCell.swift */; };
 		B440194C28CB3FF500EC541E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194B28CB3FF500EC541E /* UserCell.swift */; };
 		B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194D28CB42E300EC541E /* InvertedNoteCell.swift */; };
-		B440195128CC48A100EC541E /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* NormalView.swift */; };
+		B440195128CC48A100EC541E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* BaseView.swift */; };
 		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
 		B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */; };
 		B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */; };
@@ -69,7 +69,7 @@
 		B440194928CB3ED400EC541E /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		B440194B28CB3FF500EC541E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B440194D28CB42E300EC541E /* InvertedNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedNoteCell.swift; sourceTree = "<group>"; };
-		B440195028CC48A100EC541E /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
+		B440195028CC48A100EC541E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
 		B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCells.swift; sourceTree = "<group>"; };
 		B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingView.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		B440194F28CC486F00EC541E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B440195028CC48A100EC541E /* NormalView.swift */,
+				B440195028CC48A100EC541E /* BaseView.swift */,
 				B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */,
 			);
 			path = Views;
@@ -438,7 +438,7 @@
 				B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */,
 				B4CFE25628C9BFE600EA0067 /* ManagedCache.swift in Sources */,
 				B4CFE22428C9054600EA0067 /* GithubUser.swift in Sources */,
-				B440195128CC48A100EC541E /* NormalView.swift in Sources */,
+				B440195128CC48A100EC541E /* BaseView.swift in Sources */,
 				B4CFE24C28C9B6C200EA0067 /* DataModel.xcdatamodeld in Sources */,
 				B44D2F1528CCAE440036FCBF /* ImageDownloader.swift in Sources */,
 				B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */,

@@ -9,7 +9,7 @@ import UIKit
 
 final class InvertedCell: NormalCell {
     override func updateAvatarImage(from data: Data?) {
-        normalView.avatarMode = .inverted
-        normalView.updateAvatarImage(from: data)
+        baseView.avatarMode = .inverted
+        baseView.updateAvatarImage(from: data)
     }
 }
