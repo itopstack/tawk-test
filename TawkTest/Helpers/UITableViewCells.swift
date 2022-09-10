@@ -9,4 +9,5 @@ import UIKit
 
 protocol CellConfigurable: UITableViewCell {
     func configure(with model: GithubUser)
+    func updateAvatarImage(from data: Data?)
 }

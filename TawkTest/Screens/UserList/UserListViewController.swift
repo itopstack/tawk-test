@@ -41,8 +41,12 @@ final class UserListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userCell = viewModel.userCell(for: indexPath)
+        let user = userCell.user
         let cell = tableView.dequeueReusableCell(withIdentifier: userCell.cellIdentifier, for: indexPath) as? CellConfigurable
-        cell?.configure(with: userCell.user)
+        cell?.configure(with: user)
+        
+        viewModel.fetchAvatar(from: user.avatarUrl) { cell?.updateAvatarImage(from: $0) }
+        
         return cell ?? UITableViewCell()
     }
     

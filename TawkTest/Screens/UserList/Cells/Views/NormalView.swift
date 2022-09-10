@@ -52,4 +52,10 @@ final class NormalView: UIView {
     func configure(with user: GithubUser?) {
         usernameLabel.text = user?.login
     }
+    
+    func updateAvatarImage(from data: Data?) {
+        if let data = data {
+            avatarImageView.image = UIImage(data: data)
+        }
+    }
 }

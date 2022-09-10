@@ -11,4 +11,8 @@ final class NoteCell: UITableViewCell, CellConfigurable {
     func configure(with model: GithubUser) {
         
     }
+    
+    func updateAvatarImage(from data: Data?) {
+        
+    }
 }

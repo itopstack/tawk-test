@@ -19,6 +19,8 @@
 		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
 		B44D2F0D28CC877A0036FCBF /* UITableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */; };
 		B44D2F0F28CC8DCB0036FCBF /* SpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */; };
+		B44D2F1128CC91940036FCBF /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1028CC91940036FCBF /* ImageDownloader.swift */; };
+		B44D2F1328CC94F40036FCBF /* ImageDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1228CC94F40036FCBF /* ImageDownloaderTests.swift */; };
 		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
 		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
@@ -73,6 +75,8 @@
 		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
 		B44D2F0C28CC877A0036FCBF /* UITableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCells.swift; sourceTree = "<group>"; };
 		B44D2F0E28CC8DCB0036FCBF /* SpacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingView.swift; sourceTree = "<group>"; };
+		B44D2F1028CC91940036FCBF /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = ../../../ImageDownloader.swift; sourceTree = "<group>"; };
+		B44D2F1228CC94F40036FCBF /* ImageDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderTests.swift; sourceTree = "<group>"; };
 		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE23628C99EF000EA0067 /* GithubService.swift */,
+				B44D2F1028CC91940036FCBF /* ImageDownloader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				B4CFE23D28C9A5C500EA0067 /* GithubServiceTests.swift */,
+				B44D2F1228CC94F40036FCBF /* ImageDownloaderTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				B4CFE27128CAFE8E00EA0067 /* AppCoordinator.swift in Sources */,
 				B4CFE26D28CAFE0200EA0067 /* Storyboarded.swift in Sources */,
 				B440194A28CB3ED400EC541E /* LoadingCell.swift in Sources */,
+				B44D2F1128CC91940036FCBF /* ImageDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +464,7 @@
 			files = (
 				B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */,
 				B4CFE23B28C9A4CE00EA0067 /* MyErrorTests.swift in Sources */,
+				B44D2F1328CC94F40036FCBF /* ImageDownloaderTests.swift in Sources */,
 				B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */,
 				B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */,

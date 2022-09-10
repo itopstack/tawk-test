@@ -30,4 +30,8 @@ final class NormalCell: UITableViewCell, CellConfigurable {
     func configure(with model: GithubUser) {
         normalView.configure(with: model)
     }
+    
+    func updateAvatarImage(from data: Data?) {
+        normalView.updateAvatarImage(from: data)
+    }
 }

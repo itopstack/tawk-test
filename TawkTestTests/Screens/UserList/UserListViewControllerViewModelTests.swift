@@ -13,6 +13,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
     private var mockService: MockGithubService!
     private var mockDelegate: MockUserListViewControllerViewModelDelegate!
     private var mockLocalStorage: MockLocalStorage!
+    private var mockImageDownloader: MockImageDownloader!
     
     override func setUp() {
         super.setUp()
@@ -20,7 +21,14 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService = MockGithubService()
         mockDelegate = MockUserListViewControllerViewModelDelegate()
         mockLocalStorage = MockLocalStorage()
-        sut = UserListViewControllerViewModel(service: mockService, localStorage: mockLocalStorage, delegate: mockDelegate)
+        mockImageDownloader = MockImageDownloader()
+        
+        sut = UserListViewControllerViewModel(
+            service: mockService,
+            localStorage: mockLocalStorage,
+            imageDowdloader: mockImageDownloader,
+            delegate: mockDelegate
+        )
     }
     
     override func tearDown() {
@@ -28,6 +36,8 @@ class UserListViewControllerViewModelTests: XCTestCase {
         
         mockDelegate = nil
         mockService = nil
+        mockLocalStorage = nil
+        mockImageDownloader = nil
         sut = nil
     }
     
@@ -226,7 +236,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.heightForRowAt(indexPath: IndexPath(row: 0, section: 1)), 76)
     }
     
-    func test() {
+    func test_heightForFooter() {
         sut.fetchUsers(timestamp: Date())
         mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
         
@@ -235,18 +245,36 @@ class UserListViewControllerViewModelTests: XCTestCase {
         section = 1
         XCTAssertEqual(sut.heightForFooter(in: section), 8)
     }
+    
+    func test_fetchAvatar() {
+        let urlString = "https://avatars.githubusercontent.com/u/15520417?v=4"
+        let data = urlString.data(using: .utf8)
+        let exp = expectation(description: "Wait for completion")
+        
+        var receivedData: Data?
+        sut.fetchAvatar(from: urlString) { data in
+            receivedData = data
+            exp.fulfill()
+        }
+        mockImageDownloader.fetchImageArgs.first?.1(data)
+        
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertEqual(mockImageDownloader.fetchImageArgs.first?.0, urlString)
+        XCTAssertEqual(receivedData, data)
+    }
 }
 
 // MARK: - Mocks
 
-final class MockGithubService: UsersFetchable {
+private final class MockGithubService: UsersFetchable {
     private(set) var fetchUsersArgs: [(Int, (Result<[GithubUser], Error>) -> Void)] = []
     func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void) {
         fetchUsersArgs.append((since, completion))
     }
 }
 
-final class MockUserListViewControllerViewModelDelegate: UserListViewControllerViewModelDelegate {
+private final class MockUserListViewControllerViewModelDelegate: UserListViewControllerViewModelDelegate {
     
     private(set) var fetchUsersSuccessfullyArgs: [UserListViewControllerViewModel] = []
     func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
@@ -259,7 +287,7 @@ final class MockUserListViewControllerViewModelDelegate: UserListViewControllerV
     }
 }
 
-final class MockLocalStorage: LocalStorage {
+private final class MockLocalStorage: LocalStorage {
     private(set) var retriveArgs: [RetrievalCompletion] = []
     func retrieve(completion: @escaping RetrievalCompletion) {
         retriveArgs.append(completion)
@@ -273,5 +301,12 @@ final class MockLocalStorage: LocalStorage {
     private(set) var deleteCachedUsersArgs: [DeletionCompletion] = []
     func deleteCachedUsers(completion: @escaping DeletionCompletion) {
         deleteCachedUsersArgs.append(completion)
+    }
+}
+
+private final class MockImageDownloader: ImageDownloadable {
+    private(set) var fetchImageArgs: [(String, (Data?) -> Void)] = []
+    func fetch(from urlString: String, completion: @escaping (Data?) -> Void) {
+        fetchImageArgs.append((urlString, completion))
     }
 }

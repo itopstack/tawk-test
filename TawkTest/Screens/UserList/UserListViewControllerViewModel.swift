@@ -15,6 +15,7 @@ protocol UserListViewControllerViewModelDelegate: AnyObject {
 final class UserListViewControllerViewModel {
     private let githubService: UsersFetchable
     private let localStorage: LocalStorage
+    private let imageDownloader: ImageDownloadable
     private weak var delegate: UserListViewControllerViewModelDelegate?
     
     private(set) var userId = 0
@@ -54,9 +55,11 @@ final class UserListViewControllerViewModel {
     
     init(service: UsersFetchable = GithubService(),
          localStorage: LocalStorage,
+         imageDowdloader: ImageDownloadable = ImageDownloader(),
          delegate: UserListViewControllerViewModelDelegate) {
         self.githubService = service
         self.delegate = delegate
+        self.imageDownloader = imageDowdloader
         self.localStorage = localStorage
     }
     
@@ -98,6 +101,10 @@ final class UserListViewControllerViewModel {
                 break
             }
         }
+    }
+    
+    func fetchAvatar(from urlString: String, completion: @escaping (Data?) -> Void) {
+        imageDownloader.fetch(from: urlString, completion: completion)
     }
     
     func numberOfSections() -> Int {
