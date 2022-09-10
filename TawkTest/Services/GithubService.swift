@@ -13,6 +13,7 @@ protocol UsersFetchable: AnyObject {
 
 final class GithubService: UsersFetchable {
     private let session: Requestable
+    private let lock = NSLock()
     
     init(session: Requestable = URLSession.shared) {
         self.session = session
@@ -23,7 +24,10 @@ final class GithubService: UsersFetchable {
             return completion(.failure(MyError.invalidURL))
         }
         
-        session.request(with: url) { data, response, error in
+        lock.lock()
+        session.request(with: url) { [weak lock] data, response, error in
+            lock?.unlock()
+            
             var result: Result<[GithubUser], Error>?
             defer {
                 DispatchQueue.main.async {
