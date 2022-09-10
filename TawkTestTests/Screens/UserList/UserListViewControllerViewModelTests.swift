@@ -169,18 +169,53 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService.fetchUsersArgs.first?.1(.success(users))
         
         XCTAssertEqual(sut.userCells.count, 8)
-        XCTAssertTrue(sut.userCells[0][0] is NormalCell)
-        XCTAssertTrue(sut.userCells[1][0] is NoteCell)
-        XCTAssertTrue(sut.userCells[2][0] is NormalCell)
-        XCTAssertTrue(sut.userCells[3][0] is InvertedCell)
-        XCTAssertTrue(sut.userCells[4][0] is NormalCell)
-        XCTAssertTrue(sut.userCells[5][0] is NormalCell)
-        XCTAssertTrue(sut.userCells[6][0] is NormalCell)
-        XCTAssertTrue(sut.userCells[7][0] is InvertedNoteCell)
+        XCTAssertEqual(sut.userCells[0][0], .normal(users[0]))
+        XCTAssertEqual(sut.userCells[1][0], .note(users[1]))
+        XCTAssertEqual(sut.userCells[2][0], .normal(users[2]))
+        XCTAssertEqual(sut.userCells[3][0], .inverted(users[3]))
+        XCTAssertEqual(sut.userCells[4][0], .normal(users[4]))
+        XCTAssertEqual(sut.userCells[5][0], .normal(users[5]))
+        XCTAssertEqual(sut.userCells[6][0], .normal(users[6]))
+        XCTAssertEqual(sut.userCells[7][0], .invertedNote(users[7]))
+    }
+    
+    func test_numberOfSections() {
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
         
-        sut.userCells.forEach { cell in
-            XCTAssertNotNil(cell[0].user)
+        XCTAssertEqual(sut.numberOfSections(), 2)
+        XCTAssertEqual(sut.numberOfSections(), sut.userCells.count)
+    }
+    
+    func test_numberOfRowsInSection() {
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
+        
+        XCTAssertEqual(sut.numberOfRowsInSection(section: 0), 1)
+        XCTAssertEqual(sut.numberOfRowsInSection(section: 1), 1)
+    }
+    
+    func test_userCell() {
+        var users: [GithubUser] = []
+        for i in 0..<8 {
+            users.append(uniqueUser())
+            
+            if i == 1 || i == 7 {
+                users[i].note = "some note"
+            }
         }
+        
+        sut.fetchUsers(timestamp: Date())
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 0)), .normal(users[0]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 1)), .note(users[1]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 2)), .normal(users[2]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 3)), .inverted(users[3]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 4)), .normal(users[4]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 5)), .normal(users[5]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 6)), .normal(users[6]))
+        XCTAssertEqual(sut.userCell(for: IndexPath(row: 0, section: 7)), .invertedNote(users[7]))
     }
 }
 

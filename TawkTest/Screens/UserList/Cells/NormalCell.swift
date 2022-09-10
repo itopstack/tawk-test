@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NormalCell: UITableViewCell, UserCell {
+final class NormalCell: UITableViewCell {
     var user: GithubUser?
     
     private var normalView: NormalView!

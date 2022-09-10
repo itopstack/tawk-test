@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol UserListCoordinatorDelegate: AnyObject {
     
@@ -21,7 +22,15 @@ final class UserListCoordinator: Coordinator {
     }
 
     func start() {
+        let storeDirectory = NSPersistentContainer.defaultDirectoryURL()
+        let url = storeDirectory.appendingPathComponent("TawkTest.sqlite")
+        guard let localStorage = try? CoreDataStore(storeURL: url) else {
+            fatalError("Cannot initiate local storage")
+        }
+        
         let vc = UserListViewController()
+        let viewModel = UserListViewControllerViewModel(localStorage: localStorage, delegate: vc)
+        vc.viewModel = viewModel
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }

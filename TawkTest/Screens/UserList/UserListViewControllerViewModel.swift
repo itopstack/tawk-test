@@ -26,24 +26,23 @@ final class UserListViewControllerViewModel {
             
             for i in 0..<users.count {
                 let user = users[i]
-                let cell: UserCell
+                let userCell: UserCell
                 
                 if i % 4 == 3 { // inverted cell
                     if user.note != nil { // with note
-                        cell = InvertedNoteCell()
+                        userCell = .invertedNote(user)
                     } else { // without note
-                        cell = InvertedCell()
+                        userCell = .inverted(user)
                     }
                 } else { // normal cell
                     if user.note != nil { // with note
-                        cell = NoteCell()
+                        userCell = .note(user)
                     } else { // without note
-                        cell = NormalCell()
+                        userCell = .normal(user)
                     }
                 }
                 
-                cell.user = user
-                userCells.append([cell])
+                userCells.append([userCell])
             }
             
             self.userCells = userCells
@@ -99,5 +98,17 @@ final class UserListViewControllerViewModel {
                 break
             }
         }
+    }
+    
+    func numberOfSections() -> Int {
+        userCells.count
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        userCells[section].count
+    }
+    
+    func userCell(for indexPath: IndexPath) -> UserCell {
+        userCells[indexPath.section][indexPath.row]
     }
 }

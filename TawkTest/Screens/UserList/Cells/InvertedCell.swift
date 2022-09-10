@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class InvertedCell: UITableViewCell, UserCell {
+final class InvertedCell: UITableViewCell {
     var user: GithubUser?
     
     func configure() {

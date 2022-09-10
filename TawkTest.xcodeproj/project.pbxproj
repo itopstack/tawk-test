@@ -16,6 +16,7 @@
 		B440194E28CB42E300EC541E /* InvertedNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440194D28CB42E300EC541E /* InvertedNoteCell.swift */; };
 		B440195128CC48A100EC541E /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195028CC48A100EC541E /* NormalView.swift */; };
 		B440195328CC48BF00EC541E /* InvertedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440195228CC48BF00EC541E /* InvertedView.swift */; };
+		B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */; };
 		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
 		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 		B440194D28CB42E300EC541E /* InvertedNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedNoteCell.swift; sourceTree = "<group>"; };
 		B440195028CC48A100EC541E /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
 		B440195228CC48BF00EC541E /* InvertedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedView.swift; sourceTree = "<group>"; };
+		B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellTests.swift; sourceTree = "<group>"; };
 		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +130,6 @@
 				B440194728CB3EA900EC541E /* InvertedCell.swift */,
 				B440194D28CB42E300EC541E /* InvertedNoteCell.swift */,
 				B440194928CB3ED400EC541E /* LoadingCell.swift */,
-				B440194B28CB3FF500EC541E /* UserCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -181,6 +182,7 @@
 		B4CFE22228C9049D00EA0067 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B440194B28CB3FF500EC541E /* UserCell.swift */,
 				B4CFE22328C9054600EA0067 /* GithubUser.swift */,
 				B4CFE23828C99FAD00EA0067 /* MyError.swift */,
 			);
@@ -204,6 +206,7 @@
 			children = (
 				B4CFE23328C907DB00EA0067 /* GithubUserTests.swift */,
 				B4CFE23A28C9A4CE00EA0067 /* MyErrorTests.swift */,
+				B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				B4CFE23B28C9A4CE00EA0067 /* MyErrorTests.swift in Sources */,
 				B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */,
 				B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */,
 				B4CFE23428C907DB00EA0067 /* GithubUserTests.swift in Sources */,
 				B4CFE23E28C9A5C500EA0067 /* GithubServiceTests.swift in Sources */,
 				B4CFE25A28C9DB0100EA0067 /* NSManagedObjectContext+Helpers.swift in Sources */,

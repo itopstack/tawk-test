@@ -20,6 +20,8 @@ struct GithubUser: Equatable {
     
     var hasSeen = false
     var note: String? = nil
+    
+    static let `default` = GithubUser(login: "", id: 0, avatarUrl: "", url: "", followersUrl: "", organizationsUrl: "", reposUrl: "", type: "", siteAdmin: false)
 }
 
 extension GithubUser: Codable {
