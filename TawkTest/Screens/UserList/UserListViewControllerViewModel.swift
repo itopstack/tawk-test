@@ -106,7 +106,7 @@ final class UserListViewControllerViewModel {
                 }
                 self.isDataFromCached = false
                 
-                self.localStorage.insert(users, timestamp: timestamp) { _ in }
+                self.localStorage.insert(self.users, timestamp: timestamp) { _ in }
                 self.delegate?.userListViewControllerViewModelDidFetchUsersSuccessfully(self)
                 
             case let .failure(error):

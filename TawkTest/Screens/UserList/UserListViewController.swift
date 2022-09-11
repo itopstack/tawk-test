@@ -37,6 +37,7 @@ final class UserListViewController: UITableViewController, UISearchResultsUpdati
         tableView.separatorColor = .clear
         tableView.tableHeaderView = resultSearchController.searchBar
         
+        viewModel.retrieveCached()
         viewModel.fetchUsers(timestamp: Date())
     }
     
@@ -106,8 +107,10 @@ final class UserListViewController: UITableViewController, UISearchResultsUpdati
 
 extension UserListViewController: UserListViewControllerViewModelDelegate {
     func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
-        tableView.reloadData()
-        tableView.tableFooterView = nil
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+            self?.tableView.tableFooterView = nil
+        }
     }
     
     func userListViewControllerViewModelDidFetchUsersFail(_ viewModel: UserListViewControllerViewModel, errorMessage: String) {

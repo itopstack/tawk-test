@@ -21,7 +21,11 @@ final class ImageDownloader: ImageDownloadable {
     private init() {}
     
     func fetch(from urlString: String, completion: @escaping (Data?) -> Void) {
-        if let data = cached[urlString] {
+        lock.lock()
+        let cached = cached[urlString]
+        lock.unlock()
+        
+        if let data = cached {
             return completion(data)
         }
         
