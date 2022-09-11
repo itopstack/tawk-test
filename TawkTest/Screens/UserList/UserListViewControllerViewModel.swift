@@ -54,7 +54,7 @@ final class UserListViewControllerViewModel {
     
     init(service: UsersFetchable = GithubService(),
          localStorage: LocalStorage,
-         imageDowdloader: ImageDownloadable = ImageDownloader(),
+         imageDowdloader: ImageDownloadable = ImageDownloader.shared,
          delegate: UserListViewControllerViewModelDelegate) {
         self.githubService = service
         self.delegate = delegate

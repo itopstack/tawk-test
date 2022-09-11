@@ -16,12 +16,14 @@ final class ImageDownloaderTests: XCTestCase {
         super.setUp()
         
         mockSession = MockURLSession()
-        sut = ImageDownloader(session: mockSession)
+        sut = ImageDownloader.shared
+        sut.session = mockSession
     }
     
     override func tearDown() {
         super.tearDown()
         
+        ImageDownloader.shared.session = URLSession.shared
         mockSession = nil
         sut = nil
     }

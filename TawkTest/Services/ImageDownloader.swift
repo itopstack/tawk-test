@@ -12,13 +12,13 @@ protocol ImageDownloadable: AnyObject {
 }
 
 final class ImageDownloader: ImageDownloadable {
-    private let session: Requestable
+    static let shared = ImageDownloader()
+    
+    var session: Requestable = URLSession.shared
     private var cached: [String: Data] = [:]
     private let lock = NSLock()
     
-    init(session: Requestable = URLSession.shared) {
-        self.session = session
-    }
+    private init() {}
     
     func fetch(from urlString: String, completion: @escaping (Data?) -> Void) {
         if let data = cached[urlString] {

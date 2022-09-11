@@ -11,7 +11,11 @@ protocol UsersFetchable: AnyObject {
     func fetchUsers(since: Int, completion: @escaping (Result<[GithubUser], Error>) -> Void)
 }
 
-final class GithubService: UsersFetchable {
+protocol ProfileFetchable: AnyObject {
+    func fetchUserProfile(from urlString: String, completion: @escaping (Result<UserProfile, Error>) -> Void)
+}
+
+final class GithubService: UsersFetchable, ProfileFetchable {
     private let session: Requestable
     
     init(session: Requestable = URLSession.shared) {
@@ -53,6 +57,47 @@ final class GithubService: UsersFetchable {
             do {
                 let users = try JSONDecoder().decode([GithubUser].self, from: data)
                 result = .success(users)
+            } catch {
+                result = .failure(error)
+            }
+        }
+    }
+    
+    func fetchUserProfile(from urlString: String, completion: @escaping (Result<UserProfile, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            return completion(.failure(MyError.invalidURL))
+        }
+        
+        session.request(with: url) { data, response, error in
+            var result: Result<UserProfile, Error>?
+            defer {
+                DispatchQueue.main.async {
+                    if let result = result {
+                        completion(result)
+                    } else {
+                        completion(.failure(MyError.missingResult))
+                    }
+                }
+            }
+            
+            if let error = error {
+                result = .failure(error)
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 200 else {
+                result = .failure(MyError.invalidStatusCode)
+                return
+            }
+            
+            guard let data = data else {
+                result = .failure(MyError.missingData)
+                return
+            }
+            
+            do {
+                let profile = try JSONDecoder().decode(UserProfile.self, from: data)
+                result = .success(profile)
             } catch {
                 result = .failure(error)
             }

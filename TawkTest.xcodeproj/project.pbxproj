@@ -21,6 +21,9 @@
 		B44D2F1528CCAE440036FCBF /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1428CCAE440036FCBF /* ImageDownloader.swift */; };
 		B44D2F1A28CD05590036FCBF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1928CD05590036FCBF /* UserProfileViewController.swift */; };
 		B44D2F1C28CD067B0036FCBF /* UserProfileViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1B28CD067B0036FCBF /* UserProfileViewControllerViewModel.swift */; };
+		B44D2F1F28CDB5610036FCBF /* UserProfileViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F1E28CDB5610036FCBF /* UserProfileViewControllerViewModelTests.swift */; };
+		B44D2F2128CDB82F0036FCBF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F2028CDB82F0036FCBF /* UserProfile.swift */; };
+		B44D2F2528CDCADF0036FCBF /* UserProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D2F2428CDCADF0036FCBF /* UserProfileTests.swift */; };
 		B45C291328CC4B38000EEBD9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291228CC4B38000EEBD9 /* Views.swift */; };
 		B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */; };
 		B4CFE20F28C902E600EA0067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFE20E28C902E600EA0067 /* AppDelegate.swift */; };
@@ -77,6 +80,9 @@
 		B44D2F1428CCAE440036FCBF /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B44D2F1928CD05590036FCBF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B44D2F1B28CD067B0036FCBF /* UserProfileViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewControllerViewModel.swift; sourceTree = "<group>"; };
+		B44D2F1E28CDB5610036FCBF /* UserProfileViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewControllerViewModelTests.swift; sourceTree = "<group>"; };
+		B44D2F2028CDB82F0036FCBF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		B44D2F2428CDCADF0036FCBF /* UserProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTests.swift; sourceTree = "<group>"; };
 		B45C291228CC4B38000EEBD9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		B45C291428CC4F2D000EEBD9 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		B4CFE20B28C902E600EA0067 /* TawkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TawkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +166,14 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
+		B44D2F1D28CDB53F0036FCBF /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B44D2F1E28CDB5610036FCBF /* UserProfileViewControllerViewModelTests.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		B4CFE20228C902E600EA0067 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +215,7 @@
 				B440194B28CB3FF500EC541E /* UserCell.swift */,
 				B4CFE22328C9054600EA0067 /* GithubUser.swift */,
 				B4CFE23828C99FAD00EA0067 /* MyError.swift */,
+				B44D2F2028CDB82F0036FCBF /* UserProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +238,7 @@
 				B4CFE23328C907DB00EA0067 /* GithubUserTests.swift */,
 				B4CFE23A28C9A4CE00EA0067 /* MyErrorTests.swift */,
 				B44D2F0828CC7DB70036FCBF /* UserCellTests.swift */,
+				B44D2F2428CDCADF0036FCBF /* UserProfileTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +305,7 @@
 		B4CFE26528C9FAC900EA0067 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B44D2F1D28CDB53F0036FCBF /* UserProfile */,
 				B4CFE26728C9FAE000EA0067 /* UserList */,
 			);
 			path = Screens;
@@ -443,6 +460,7 @@
 				B4CFE26B28CAFD6D00EA0067 /* Coordinator.swift in Sources */,
 				B440194428CB3E6000EC541E /* NormalCell.swift in Sources */,
 				B4CFE27328CB009E00EA0067 /* UsersFlowCoordinator.swift in Sources */,
+				B44D2F2128CDB82F0036FCBF /* UserProfile.swift in Sources */,
 				B4CFE26428C9F93500EA0067 /* UserListViewControllerViewModel.swift in Sources */,
 				B45C291528CC4F2D000EEBD9 /* CircleImageView.swift in Sources */,
 				B44D2F1C28CD067B0036FCBF /* UserProfileViewControllerViewModel.swift in Sources */,
@@ -470,9 +488,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44D2F1F28CDB5610036FCBF /* UserProfileViewControllerViewModelTests.swift in Sources */,
 				B4CFE25C28C9DB5800EA0067 /* NSEntityDescription+Assertions.swift in Sources */,
 				B4CFE23B28C9A4CE00EA0067 /* MyErrorTests.swift in Sources */,
 				B44D2F1328CC94F40036FCBF /* ImageDownloaderTests.swift in Sources */,
+				B44D2F2528CDCADF0036FCBF /* UserProfileTests.swift in Sources */,
 				B4CFE26928C9FAF800EA0067 /* UserListViewControllerViewModelTests.swift in Sources */,
 				B4CFE26128C9DD8F00EA0067 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B44D2F0928CC7DB70036FCBF /* UserCellTests.swift in Sources */,

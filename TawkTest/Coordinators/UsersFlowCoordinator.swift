@@ -38,7 +38,7 @@ final class UsersFlowCoordinator: Coordinator {
     
     private func pushToUserProfile(with user: GithubUser) {
         let vc = UserProfileViewController.instantiate(storyboardName: "UserProfile")
-        let viewModel = UserProfileViewControllerViewModel(user: user, delegate: vc)
+        let viewModel = UserProfileViewControllerViewModel(user: user)
         vc.viewModel = viewModel
         vc.coordinator = self
         vc.title = user.login

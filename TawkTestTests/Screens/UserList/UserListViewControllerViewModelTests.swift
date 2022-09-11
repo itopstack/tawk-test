@@ -345,7 +345,7 @@ private final class MockLocalStorage: LocalStorage {
     }
 }
 
-private final class MockImageDownloader: ImageDownloadable {
+final class MockImageDownloader: ImageDownloadable {
     private(set) var fetchImageArgs: [(String, (Data?) -> Void)] = []
     func fetch(from urlString: String, completion: @escaping (Data?) -> Void) {
         fetchImageArgs.append((urlString, completion))

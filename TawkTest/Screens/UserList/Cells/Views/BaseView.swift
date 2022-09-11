@@ -46,7 +46,7 @@ final class BaseView: UIView {
         avatarImageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         
         usernameLabel = UILabel()
-        usernameLabel.font = .boldSystemFont(ofSize: 14)
+        usernameLabel.font = .boldSystemFont(ofSize: 16)
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(usernameLabel)
         NSLayoutConstraint.activate([
