@@ -32,7 +32,6 @@ final class ImageDownloader: ImageDownloadable {
         let cached = cached[urlString]
         lock.unlock()
         
-        
         // local cache
         if let data = cached {
             return completion(data)

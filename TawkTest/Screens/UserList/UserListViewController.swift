@@ -19,6 +19,7 @@ final class UserListViewController: UITableViewController, UISearchResultsUpdati
         let controller = UISearchController(searchResultsController: nil)
         controller.searchResultsUpdater = self
         controller.obscuresBackgroundDuringPresentation = false
+        controller.hidesNavigationBarDuringPresentation = false
         controller.searchBar.sizeToFit()
         return controller
     }()
@@ -39,6 +40,11 @@ final class UserListViewController: UITableViewController, UISearchResultsUpdati
         
         viewModel.retrieveCached()
         viewModel.fetchUsers(timestamp: Date())
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resultSearchController.isActive = false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
