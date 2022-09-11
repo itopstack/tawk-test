@@ -45,7 +45,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.lastId, 0)
         XCTAssertNil(sut.error)
         XCTAssertTrue(sut.users.isEmpty)
-        XCTAssertFalse(sut.isDataFromCached)
         XCTAssertTrue(sut.userCells.isEmpty)
         XCTAssertTrue(sut.searchText.isEmpty)
     }
@@ -88,7 +87,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
         
         XCTAssertEqual(sut.users.count, 2)
         XCTAssertIdentical(mockDelegate.fetchUsersSuccessfullyArgs.first, sut)
-        XCTAssertTrue(sut.isDataFromCached)
     }
     
     func test_retrieveCachedSuccessfully_thenFetchUsersSuccessfully() {
@@ -102,8 +100,7 @@ class UserListViewControllerViewModelTests: XCTestCase {
         sut.fetchUsers(timestamp: timestamp)
         mockService.fetchUsersArgs.first?.1(.success(users))
         
-        XCTAssertEqual(sut.users.count, 2)
-        XCTAssertFalse(sut.isDataFromCached)
+        XCTAssertEqual(sut.users.count, 4)
     }
     
     func test_retrieveCachedFail_thenFetchUsersFail() {
@@ -116,7 +113,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService.fetchUsersArgs.first?.1(.failure(anyError))
         
         XCTAssertEqual(sut.users.count, 0)
-        XCTAssertFalse(sut.isDataFromCached)
     }
     
     func test_retrieveCachedSuccessfully_thenFetchUsersFail() {
@@ -130,7 +126,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService.fetchUsersArgs.first?.1(.failure(anyError))
 
         XCTAssertEqual(sut.users.count, 2)
-        XCTAssertTrue(sut.isDataFromCached)
     }
 
     func test_retrieveCachedFail_thenFetchUsersSuccessfully() {
@@ -144,26 +139,44 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService.fetchUsersArgs.first?.1(.success(users))
 
         XCTAssertEqual(sut.users.count, 2)
-        XCTAssertFalse(sut.isDataFromCached)
     }
     
     func test_userCells_updatedWhenGithubUsersAreChanged() {
-        let users = [uniqueUser()]
+        var users = [uniqueUser()]
         let timestamp = Date()
         
         sut.fetchUsers(timestamp: timestamp)
         mockService.fetchUsersArgs.first?.1(.success(users))
         XCTAssertEqual(sut.users.count, sut.userCells.count)
         
+        users[0].note = "note"
         sut.fetchUsers(timestamp: timestamp)
         mockService.fetchUsersArgs.last?.1(.success(users))
         XCTAssertEqual(sut.users.count, sut.userCells.count)
         
+        users[0].note = "note 2"
         sut.fetchUsers(timestamp: timestamp)
         mockService.fetchUsersArgs.last?.1(.success(users))
         XCTAssertEqual(sut.users.count, sut.userCells.count)
         
         XCTAssertEqual(sut.userCells.count, 3)
+    }
+    
+    func test_users_notNeedToUpdateIfNewUsersAreTheSame() {
+        let users = [uniqueUser()]
+        let timestamp = Date()
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.first?.1(.success(users))
+        XCTAssertEqual(sut.users.count, 1)
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.last?.1(.success(users))
+        
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.last?.1(.success(users))
+        
+        XCTAssertEqual(sut.userCells.count, 1) // Still 1
     }
     
     func test_userCells_typeAreCorrectBasedGithubUsers() {

@@ -29,7 +29,6 @@ final class UserListViewControllerViewModel {
         }
     }
     
-    private(set) var isDataFromCached = false
     private(set) var userCells: [[UserCell]] = []
     
     var filteredUserCells: [[UserCell]] {
@@ -103,13 +102,23 @@ final class UserListViewControllerViewModel {
                     self.lastId = lastId
                 }
                 
-                if self.isDataFromCached {
-                    self.users = users
-                } else {
-                    self.users.append(contentsOf: users)
+                var tmp = self.users
+                for i in 0..<users.count {
+                    var newUser = users[i]
+                    
+                    // If data that come from api is exactly the same with local storage, we do not need to insert new user to our data source, we just copy note from previous to new one
+                    if tmp.contains(newUser) {
+                        newUser.note = tmp[i].note
+                        tmp[i] = newUser
+                    } else {
+                        tmp.append(newUser)
+                    }
                 }
-                self.isDataFromCached = false
-                self.localStorage.insert(self.users, timestamp: timestamp) { _ in }
+                
+                if tmp != self.users {
+                    self.users = tmp
+                    self.localStorage.insert(self.users, timestamp: timestamp) { _ in }
+                }
                 
             case let .failure(error):
                 self.error = error
@@ -125,7 +134,6 @@ final class UserListViewControllerViewModel {
             switch result {
             case let .found(users, _):
                 self.users = users
-                self.isDataFromCached = true
                 self.delegate?.userListViewControllerViewModelDidUpdateUsersSuccessfully(self)
             case .failure, .empty:
                 break
