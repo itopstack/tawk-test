@@ -318,7 +318,7 @@ private final class MockGithubService: UsersFetchable {
 private final class MockUserListViewControllerViewModelDelegate: UserListViewControllerViewModelDelegate {
     
     private(set) var fetchUsersSuccessfullyArgs: [UserListViewControllerViewModel] = []
-    func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
+    func userListViewControllerViewModelDidUpdateUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
         fetchUsersSuccessfullyArgs.append(viewModel)
     }
     

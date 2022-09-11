@@ -106,7 +106,7 @@ final class UserListViewController: UITableViewController, UISearchResultsUpdati
 // MARK: - UserListViewControllerViewModelDelegate
 
 extension UserListViewController: UserListViewControllerViewModelDelegate {
-    func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
+    func userListViewControllerViewModelDidUpdateUsersSuccessfully(_ viewModel: UserListViewControllerViewModel) {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
             self?.tableView.tableFooterView = nil

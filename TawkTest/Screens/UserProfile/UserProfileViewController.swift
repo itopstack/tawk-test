@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserProfileViewControllerDelegate: AnyObject {
-    
+    func userProfileViewController(_ vc: UserProfileViewController, didUpdate note: String, at userId: Int)
 }
 
 final class UserProfileViewController: UIViewController, Storyboarded {
@@ -50,6 +50,7 @@ final class UserProfileViewController: UIViewController, Storyboarded {
                 self?.locationLabel.text = self?.viewModel.location
                 self?.reposLabel.text = self?.viewModel.repos
                 self?.bioLabel.text = self?.viewModel.bio
+                self?.noteTextView.text = self?.viewModel.note
                 
                 self?.viewModel.loadProfileImage(completion: { data in
                     if let data = data {
@@ -66,6 +67,7 @@ final class UserProfileViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func save(_ sender: Any) {
-        // TODO: Save note to CoreData
+        view.endEditing(true)
+        coordinator?.userProfileViewController(self, didUpdate: noteTextView.text, at: viewModel.userProfile.id)
     }
 }

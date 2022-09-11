@@ -53,5 +53,17 @@ extension UsersFlowCoordinator: UserListViewControllerDelegate {
 }
 
 extension UsersFlowCoordinator: UserProfileViewControllerDelegate {
-    
+    func userProfileViewController(_ vc: UserProfileViewController, didUpdate note: String, at userId: Int) {
+        guard let userListViewController = (navigationController.viewControllers.first { $0 is UserListViewController }) as? UserListViewController else {
+            return
+        }
+        
+        for i in 0..<userListViewController.viewModel.users.count {
+            let user = userListViewController.viewModel.users[i]
+            if user.id == userId {
+                userListViewController.viewModel.users[i].note = note
+                break
+            }
+        }
+    }
 }

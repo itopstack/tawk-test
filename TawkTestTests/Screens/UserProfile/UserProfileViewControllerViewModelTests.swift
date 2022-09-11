@@ -18,7 +18,10 @@ class UserProfileViewControllerViewModelTests: XCTestCase {
         
         mockImageDownloader = MockImageDownloader()
         mockGithubService = MockGithubService()
-        sut = UserProfileViewControllerViewModel(user: uniqueUser(), githubService: mockGithubService, imageDownloader: mockImageDownloader)
+        
+        var user = uniqueUser()
+        user.note = "my note"
+        sut = UserProfileViewControllerViewModel(user: user, githubService: mockGithubService, imageDownloader: mockImageDownloader)
         
         let exp = expectation(description: "Wait for completion")
         sut.fetchUserProfile { _ in
@@ -80,8 +83,8 @@ class UserProfileViewControllerViewModelTests: XCTestCase {
         XCTAssertEqual(sut.bio, "bio: my bio")
     }
     
-    func test_save_note() {
-        
+    func test_note() {
+        XCTAssertEqual(sut.note, "my note")
     }
 }
 

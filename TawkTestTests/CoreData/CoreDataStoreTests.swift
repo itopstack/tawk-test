@@ -226,7 +226,7 @@ class CoreDataStoreTests: XCTestCase {
         entity.verify(attribute: "type", hasType: .stringAttributeType, isOptional: false)
         entity.verify(attribute: "siteAdmin", hasType: .booleanAttributeType, isOptional: false)
         entity.verify(attribute: "hasSeen", hasType: .booleanAttributeType, isOptional: false)
-        entity.verify(attribute: "note", hasType: .stringAttributeType, isOptional: true)
+        entity.verify(attribute: "note", hasType: .stringAttributeType, isOptional: false)
     }
 
     // - MARK: Helpers

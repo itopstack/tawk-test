@@ -25,7 +25,7 @@ class GithubUserTests: XCTestCase {
         XCTAssertFalse(sut.siteAdmin)
         XCTAssertEqual(sut.login, "itopstack")
         XCTAssertFalse(sut.hasSeen)
-        XCTAssertNil(sut.note)
+        XCTAssertTrue(sut.note.isEmpty)
     }
 }
 

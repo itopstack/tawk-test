@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserListViewControllerViewModelDelegate: AnyObject {
-    func userListViewControllerViewModelDidFetchUsersSuccessfully(_ viewModel: UserListViewControllerViewModel)
+    func userListViewControllerViewModelDidUpdateUsersSuccessfully(_ viewModel: UserListViewControllerViewModel)
     func userListViewControllerViewModelDidFetchUsersFail(_ viewModel: UserListViewControllerViewModel, errorMessage: String)
 }
 
@@ -21,9 +21,11 @@ final class UserListViewControllerViewModel {
     private(set) var lastId = 0
     private(set) var error: Error?
     
-    private(set) var users: [GithubUser] = [] {
+    // single source of truth
+    var users: [GithubUser] = [] {
         didSet {
-            self.userCells = buildUserCells(from: users)
+            userCells = buildUserCells(from: users)
+            delegate?.userListViewControllerViewModelDidUpdateUsersSuccessfully(self)
         }
     }
     
@@ -39,7 +41,9 @@ final class UserListViewControllerViewModel {
                 if user.login.lowercased().contains(searchText) {
                     return true
                 }
-                if let note = user.note {
+                
+                let note = user.note
+                if !note.isEmpty {
                     return note.lowercased().contains(searchText)
                 }
                 return false
@@ -70,13 +74,13 @@ final class UserListViewControllerViewModel {
             let userCell: UserCell
             
             if i % 4 == 3 { // inverted cell
-                if user.note != nil { // with note
+                if !user.note.isEmpty { // with note
                     userCell = .invertedNote(user)
                 } else { // without note
                     userCell = .inverted(user)
                 }
             } else { // normal cell
-                if user.note != nil { // with note
+                if !user.note.isEmpty { // with note
                     userCell = .note(user)
                 } else { // without note
                     userCell = .normal(user)
@@ -105,9 +109,7 @@ final class UserListViewControllerViewModel {
                     self.users.append(contentsOf: users)
                 }
                 self.isDataFromCached = false
-                
                 self.localStorage.insert(self.users, timestamp: timestamp) { _ in }
-                self.delegate?.userListViewControllerViewModelDidFetchUsersSuccessfully(self)
                 
             case let .failure(error):
                 self.error = error
@@ -124,7 +126,7 @@ final class UserListViewControllerViewModel {
             case let .found(users, _):
                 self.users = users
                 self.isDataFromCached = true
-                self.delegate?.userListViewControllerViewModelDidFetchUsersSuccessfully(self)
+                self.delegate?.userListViewControllerViewModelDidUpdateUsersSuccessfully(self)
             case .failure, .empty:
                 break
             }

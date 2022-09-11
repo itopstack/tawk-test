@@ -12,7 +12,7 @@ final class UserProfileViewControllerViewModel {
     private let githubService: ProfileFetchable
     private let imageDownloader: ImageDownloadable
     
-    private var userProfile: UserProfile!
+    private(set) var userProfile: UserProfile!
     
     init(user: GithubUser,
          githubService: ProfileFetchable = GithubService(),
@@ -57,6 +57,10 @@ final class UserProfileViewControllerViewModel {
             return "bio: \(bio)"
         }
         return "bio: -"
+    }
+    
+    var note: String? {
+        user.note
     }
     
     func fetchUserProfile(completion: @escaping (_ errorMessage: String?) -> Void) {

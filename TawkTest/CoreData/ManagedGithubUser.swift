@@ -20,7 +20,7 @@ final class ManagedGithubUser: NSManagedObject {
     @NSManaged var type: String
     @NSManaged var siteAdmin: Bool
     @NSManaged var hasSeen: Bool
-    @NSManaged var note: String?
+    @NSManaged var note: String
 }
 
 extension ManagedGithubUser {
