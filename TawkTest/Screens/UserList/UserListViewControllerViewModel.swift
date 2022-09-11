@@ -54,7 +54,7 @@ final class UserListViewControllerViewModel {
     
     var searchText = ""
     
-    init(service: UsersFetchable = GithubService(),
+    init(service: UsersFetchable,
          localStorage: LocalStorage,
          imageDowdloader: ImageDownloadable = ImageDownloader.shared,
          delegate: UserListViewControllerViewModelDelegate) {

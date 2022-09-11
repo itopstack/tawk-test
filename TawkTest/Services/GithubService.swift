@@ -18,7 +18,7 @@ protocol ProfileFetchable: AnyObject {
 final class GithubService: UsersFetchable, ProfileFetchable {
     private let session: Requestable
     
-    init(session: Requestable = URLSession.shared) {
+    init(session: Requestable) {
         self.session = session
     }
     

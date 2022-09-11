@@ -15,7 +15,7 @@ final class UserProfileViewControllerViewModel {
     private(set) var userProfile: UserProfile!
     
     init(user: GithubUser,
-         githubService: ProfileFetchable = GithubService(),
+         githubService: ProfileFetchable,
          imageDownloader: ImageDownloadable = ImageDownloader.shared) {
         self.user = user
         self.githubService = githubService

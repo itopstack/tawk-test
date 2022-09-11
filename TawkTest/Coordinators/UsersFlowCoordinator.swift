@@ -17,6 +17,12 @@ final class UsersFlowCoordinator: Coordinator {
     var navigationController: UINavigationController
     weak var parent: (Coordinator & UsersFlowCoordinatorDelegate)?
 
+    private var urlSession: URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.waitsForConnectivity = true
+        return URLSession(configuration: configuration)
+    }
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -29,7 +35,7 @@ final class UsersFlowCoordinator: Coordinator {
         }
         
         let vc = UserListViewController()
-        let viewModel = UserListViewControllerViewModel(localStorage: localStorage, delegate: vc)
+        let viewModel = UserListViewControllerViewModel(service: GithubService(session: urlSession), localStorage: localStorage, delegate: vc)
         vc.viewModel = viewModel
         vc.coordinator = self
         vc.title = "Github Users"
@@ -38,7 +44,7 @@ final class UsersFlowCoordinator: Coordinator {
     
     private func pushToUserProfile(with user: GithubUser) {
         let vc = UserProfileViewController.instantiate(storyboardName: "UserProfile")
-        let viewModel = UserProfileViewControllerViewModel(user: user)
+        let viewModel = UserProfileViewControllerViewModel(user: user, githubService: GithubService(session: urlSession))
         vc.viewModel = viewModel
         vc.coordinator = self
         vc.title = user.login
