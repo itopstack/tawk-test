@@ -61,7 +61,7 @@ extension UsersFlowCoordinator: UserProfileViewControllerDelegate {
         for i in 0..<userListViewController.viewModel.users.count {
             let user = userListViewController.viewModel.users[i]
             if user.id == userId {
-                userListViewController.viewModel.users[i].note = note
+                userListViewController.viewModel.updateNote(note, at: i, timestamp: Date())
                 break
             }
         }

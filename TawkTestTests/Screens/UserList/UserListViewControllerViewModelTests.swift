@@ -304,6 +304,23 @@ class UserListViewControllerViewModelTests: XCTestCase {
         
         XCTAssertEqual(sut.filteredUserCells.count, 1)
     }
+    
+    func test_updateNote() {
+        let note = "my note"
+        let timestamp = Date()
+        sut.fetchUsers(timestamp: timestamp)
+        mockService.fetchUsersArgs.first?.1(.success(uniqueUsers()))
+        
+        XCTAssertEqual(sut.users.first?.note.isEmpty, true)
+        
+        sut.updateNote(note, at: 0, timestamp: timestamp)
+        
+        XCTAssertEqual(sut.users.first?.note, note)
+        
+        let last = mockLocalStorage.insertArgs.last
+        XCTAssertEqual(last?.0.first?.note, note)
+        XCTAssertEqual(last?.1, timestamp)
+    }
 }
 
 // MARK: - Mocks

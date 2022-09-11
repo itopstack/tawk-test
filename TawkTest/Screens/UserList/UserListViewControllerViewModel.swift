@@ -160,4 +160,9 @@ final class UserListViewControllerViewModel {
     var allowLoadMore: Bool {
         searchText.isEmpty
     }
+    
+    func updateNote(_ note: String, at index: Int, timestamp: Date) {
+        users[index].note = note
+        localStorage.insert(users, timestamp: timestamp) { _ in } // Update database with user's note
+    }
 }
