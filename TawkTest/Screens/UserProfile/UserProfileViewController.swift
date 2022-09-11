@@ -60,6 +60,11 @@ final class UserProfileViewController: UIViewController, Storyboarded {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        view.endEditing(true)
+    }
+    
     @IBAction func save(_ sender: Any) {
         // TODO: Save note to CoreData
     }
