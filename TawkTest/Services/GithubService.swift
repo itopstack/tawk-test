@@ -111,6 +111,6 @@ protocol Requestable: AnyObject {
 
 extension URLSession: Requestable {
     func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        dataTask(with: url, completionHandler: completion).resume()
+        dataTask(with: URLRequest(url: url), completionHandler: completion).resume()
     }
 }

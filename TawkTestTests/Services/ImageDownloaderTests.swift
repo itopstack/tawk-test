@@ -11,21 +11,27 @@ import XCTest
 final class ImageDownloaderTests: XCTestCase {
     private var sut: ImageDownloader!
     private var mockSession: MockURLSession!
+    private var mockDiskCache: MockURLCache!
     
     override func setUp() {
         super.setUp()
         
         mockSession = MockURLSession()
+        mockDiskCache = MockURLCache()
+        
         sut = ImageDownloader.shared
         sut.session = mockSession
+        sut.cache = mockDiskCache
     }
     
     override func tearDown() {
         super.tearDown()
         
         ImageDownloader.shared.session = URLSession.shared
+        ImageDownloader.shared.cache = URLCache.shared
         mockSession = nil
         sut = nil
+        mockDiskCache = nil
     }
     
     func test_fetch_fromCached() {
@@ -76,9 +82,15 @@ final class ImageDownloaderTests: XCTestCase {
     }
 }
 
+// MARK: - Mock
+
 private final class MockURLSession: Requestable {
     private(set) var requestArgs: [(URL, (Data?, URLResponse?, Error?) -> Void)] = []
     func request(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         requestArgs.append((url, completion))
     }
+}
+
+private final class MockURLCache: Cachable {
+    func cachedResponse(for request: URLRequest) -> CachedURLResponse? { nil }
 }
