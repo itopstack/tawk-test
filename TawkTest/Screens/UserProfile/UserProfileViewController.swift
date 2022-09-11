@@ -21,6 +21,7 @@ final class UserProfileViewController: UIViewController, Storyboarded {
     @IBOutlet weak var reposLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var personalView: UIStackView!
     
     var viewModel: UserProfileViewControllerViewModel!
     weak var coordinator: (Coordinator & UserProfileViewControllerDelegate)?
@@ -29,6 +30,14 @@ final class UserProfileViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         precondition(viewModel != nil, "ViewModel is missing, please assign it to view controller first")
+        
+        personalView.layer.borderWidth = 1
+        personalView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        personalView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        personalView.isLayoutMarginsRelativeArrangement = true
+        
+        noteTextView.layer.borderWidth = 1
+        noteTextView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         
         viewModel.fetchUserProfile { [weak self] errorMessage in
             if let errorMessage = errorMessage {
@@ -52,6 +61,6 @@ final class UserProfileViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func save(_ sender: Any) {
-        
+        // TODO: Save note to CoreData
     }
 }
