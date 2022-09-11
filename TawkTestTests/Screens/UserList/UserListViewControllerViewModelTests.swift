@@ -43,7 +43,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
     
     func test_initialValues() {
         XCTAssertEqual(sut.lastId, 0)
-        XCTAssertNil(sut.error)
         XCTAssertTrue(sut.users.isEmpty)
         XCTAssertTrue(sut.userCells.isEmpty)
         XCTAssertTrue(sut.searchText.isEmpty)
@@ -72,7 +71,6 @@ class UserListViewControllerViewModelTests: XCTestCase {
         mockService.fetchUsersArgs.first?.1(.failure(anyError))
         
         XCTAssertEqual(sut.lastId, 0)
-        XCTAssertNotNil(sut.error)
         
         let first = mockDelegate.fetchUsersFailArgs.first
         XCTAssertIdentical(first?.0, sut)

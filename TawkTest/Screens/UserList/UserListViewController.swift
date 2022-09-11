@@ -114,6 +114,9 @@ extension UserListViewController: UserListViewControllerViewModelDelegate {
     }
     
     func userListViewControllerViewModelDidFetchUsersFail(_ viewModel: UserListViewControllerViewModel, errorMessage: String) {
-        
+        let alertView = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertView.addAction(okAction)
+        present(alertView, animated: true)
     }
 }

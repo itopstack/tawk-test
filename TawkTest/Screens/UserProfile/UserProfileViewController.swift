@@ -41,7 +41,12 @@ final class UserProfileViewController: UIViewController, Storyboarded {
         
         viewModel.fetchUserProfile { [weak self] errorMessage in
             if let errorMessage = errorMessage {
-                // TODO: Handle error message
+                let alertView = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                alertView.addAction(okAction)
+                self?.present(alertView, animated: true)
             } else {
                 self?.followingLabel.text = self?.viewModel.following
                 self?.followersLabel.text = self?.viewModel.followers

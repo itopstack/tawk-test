@@ -19,7 +19,6 @@ final class UserListViewControllerViewModel {
     private weak var delegate: UserListViewControllerViewModelDelegate?
     
     private(set) var lastId = 0
-    private(set) var error: Error?
     
     // single source of truth
     var users: [GithubUser] = [] {
@@ -121,8 +120,9 @@ final class UserListViewControllerViewModel {
                 }
                 
             case let .failure(error):
-                self.error = error
-                self.delegate?.userListViewControllerViewModelDidFetchUsersFail(self, errorMessage: error.localizedDescription)
+                if self.users.isEmpty {
+                    self.delegate?.userListViewControllerViewModelDidFetchUsersFail(self, errorMessage: error.localizedDescription)
+                }
             }
         }
     }
